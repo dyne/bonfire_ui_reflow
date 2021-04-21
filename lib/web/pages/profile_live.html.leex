@@ -1,0 +1,55 @@
+<main class="lg:flex lg:space-x-4">
+  <section class="w-center min-h-screen border-l border-r">
+    <%= live_component(@socket, Bonfire.UI.Reflow.PageHeaderLive, assigns) %>
+    <%= cond do %>
+      <% @selected_tab == "followers" ->  %>
+        <div class="pb-1 bg-white">
+          <%= live_component(@socket, Bonfire.UI.Social.ProfileMenuSocialLive, assigns) %>
+          <%= live_component(@socket, Bonfire.UI.Social.FollowersLive, assigns) %>
+        </div>
+      <% @selected_tab == "followed" ->  %>
+        <div class="pb-1 bg-white">
+          <%= live_component(@socket, Bonfire.UI.Social.ProfileMenuSocialLive, assigns) %>
+          <%= live_component(@socket, Bonfire.UI.Social.FollowedLive, assigns) %>
+        </div>
+        <% @selected_tab == "timeline" ->  %>
+          <div class="bg-white">
+            <%= live_component(@socket, Bonfire.UI.Social.ProfileHeroFullLive, assigns) %>
+            <%= live_component(@socket, Bonfire.UI.Reflow.ProfileNavigationLive, assigns) %>
+            <%= live_component(@socket, Bonfire.UI.Social.FeedHeaderLive, assigns) %>
+            <%= live_component(@socket, Bonfire.UI.Social.FeedLive, assigns) %>
+          </div>
+        <% @selected_tab == "inventory" ->  %>
+          <div class="bg-white">
+            <%= live_component(@socket, Bonfire.UI.Social.ProfileHeroFullLive, assigns) %>
+            <%= live_component(@socket, Bonfire.UI.Reflow.ProfileNavigationLive, assigns) %>
+            <%= live_component(@socket, Bonfire.UI.Social.FeedHeaderLive, assigns) %>
+            <div class="p-4 flex flex-col space-y-3">
+              <%= live_component(@socket, Bonfire.UI.ValueFlows.ResourceItemLive, assigns) %>
+              <%= live_component(@socket, Bonfire.UI.ValueFlows.ResourceItemLive, assigns) %>
+              <%= live_component(@socket, Bonfire.UI.ValueFlows.ResourceItemLive, assigns) %>
+              <%= live_component(@socket, Bonfire.UI.ValueFlows.ResourceItemLive, assigns) %>
+              <%= live_component(@socket, Bonfire.UI.ValueFlows.ResourceItemLive, assigns) %>
+              <%= live_component(@socket, Bonfire.UI.ValueFlows.ResourceItemLive, assigns) %>
+            </div>
+          </div>
+        <% true -> %>
+          <div class="bg-white">
+            <%= live_component(@socket, Bonfire.UI.Social.ProfileHeroFullLive, assigns) %>
+            <%= live_component(@socket, Bonfire.UI.Reflow.ProfileNavigationLive, assigns) %>
+            <%= live_component(@socket, Bonfire.UI.Social.FeedLive, assigns) %>
+          </div>
+    <% end %>
+  </section>
+
+  <aside class="flex-1 hidden mt-2 lg:flex md:flex-shrink-0">
+    <div class="h-full px-1 w-full">
+      <%= if @current_user do %>
+        <div class="sticky top-0 z-10 flex-1 px-2 py-2 mb-4 -mx-2 bg-white">
+          <%= live_component(@socket, Bonfire.UI.Social.SearchLive, assigns) %>
+        </div>
+      <% end %>
+        <%#= live_component(@socket, Bonfire.UI.Social.DMWidgetLive, assigns) %>
+    </div>
+  </aside>
+</main>

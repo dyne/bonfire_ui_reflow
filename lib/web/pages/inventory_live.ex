@@ -1,4 +1,4 @@
-defmodule Bonfire.UI.Reflow.BreadDashboardLive do
+defmodule Bonfire.UI.Reflow.InventoryLive do
   use Bonfire.Web, {:live_view, [layout: {Bonfire.UI.Reflow.LayoutView, "live.html"}]}
 
   use AbsintheClient, schema: Bonfire.GraphQL.Schema, action: [mode: :internal]
