@@ -16,14 +16,14 @@
           <div class="bg-white">
             <%= live_component(@socket, Bonfire.UI.Social.ProfileHeroFullLive, assigns) %>
             <%= live_component(@socket, Bonfire.UI.Reflow.ProfileNavigationLive, assigns) %>
-            <%= live_component(@socket, Bonfire.UI.Social.FeedHeaderLive, assigns) %>
+            <%#= live_component(@socket, Bonfire.UI.Social.FeedHeaderLive, assigns) %>
             <%= live_component(@socket, Bonfire.UI.Social.FeedLive, assigns) %>
           </div>
         <% @selected_tab == "inventory" ->  %>
           <div class="bg-white">
             <%= live_component(@socket, Bonfire.UI.Social.ProfileHeroFullLive, assigns) %>
             <%= live_component(@socket, Bonfire.UI.Reflow.ProfileNavigationLive, assigns) %>
-            <%= live_component(@socket, Bonfire.UI.Social.FeedHeaderLive, assigns) %>
+            <%#= live_component(@socket, Bonfire.UI.Social.FeedHeaderLive, assigns) %>
             <div class="p-4 flex flex-col space-y-3">
               <%= live_component(@socket, Bonfire.UI.ValueFlows.ResourceItemLive, assigns) %>
               <%= live_component(@socket, Bonfire.UI.ValueFlows.ResourceItemLive, assigns) %>
