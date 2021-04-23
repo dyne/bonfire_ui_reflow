@@ -1,6 +1,6 @@
 defmodule Bonfire.UI.Reflow.ResourceLive do
   use Bonfire.Web, :live_view
-
+  # use Surface.LiveView
   use AbsintheClient, schema: Bonfire.GraphQL.Schema, action: [mode: :internal]
 
   alias Bonfire.UI.Social.{HashtagsLive, ParticipantsLive}
