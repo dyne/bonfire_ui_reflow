@@ -8,7 +8,7 @@ defmodule Bonfire.UI.Reflow.Routes do
       # pages anyone can view
       scope "/", Bonfire.UI.Reflow do
         pipe_through :browser
-        # live "/user/:username/inventory", InventoryLive
+        live "/resource/:id", ResourceLive
       end
 
     end

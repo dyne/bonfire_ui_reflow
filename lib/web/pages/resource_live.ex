@@ -1,5 +1,5 @@
-defmodule Bonfire.UI.Reflow.InventoryLive do
-  use Bonfire.Web, {:live_view, [layout: {Bonfire.UI.Reflow.LayoutView, "live.html"}]}
+defmodule Bonfire.UI.Reflow.ResourceLive do
+  use Bonfire.Web, :live_view
 
   use AbsintheClient, schema: Bonfire.GraphQL.Schema, action: [mode: :internal]
 
@@ -25,8 +25,10 @@ defmodule Bonfire.UI.Reflow.InventoryLive do
 
     {:ok, socket
     |> assign(
-      page_title: "Home",
+      page_title: "resource",
+      page: "Resource",
       selected_tab: "about",
+      smart_input: false,
       list: intents,
       main_labels: [
         %{id: 1, name: "Frontend dev", items: 5, color: "blue"},
