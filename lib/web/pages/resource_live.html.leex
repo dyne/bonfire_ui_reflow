@@ -2,6 +2,8 @@
   <section class="w-center min-h-screen border-l border-r">
     <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive, assigns) %>
 
+    <%= live_component(@socket, ResourceWidget, assigns_clean(assigns)) %>
+
   </section>
 
   <aside class="flex-1 hidden mt-2 lg:flex md:flex-shrink-0">

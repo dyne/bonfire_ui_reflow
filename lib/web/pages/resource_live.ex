@@ -8,8 +8,10 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
   alias Bonfire.Web.LivePlugs
   alias Bonfire.Me.Users
   alias Bonfire.Me.Web.{CreateUserLive, LoggedDashboardLive}
+  alias Bonfire.UI.Reflow.ResourceWidget
 
   def mount(params, session, socket) do
+
     LivePlugs.live_plug params, session, socket, [
       LivePlugs.LoadCurrentAccount,
       LivePlugs.LoadCurrentUser,
@@ -20,6 +22,7 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
   end
 
   defp mounted(params, session, socket) do
+
     intents = all_intents(socket)
     IO.inspect(intents)
 
