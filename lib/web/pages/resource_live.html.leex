@@ -1,17 +1,20 @@
 <main class="lg:flex lg:space-x-4">
   <section class="w-center min-h-screen border-l border-r">
     <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive, assigns) %>
-
-    <%= live_component(@socket, ResourceWidget, assigns_clean(assigns)) %>
-
+    <%= live_component(@socket, Bonfire.UI.ValueFlows.ResourceHeroLive, assigns_clean(assigns)) %>
+    <%= live_component(@socket, Bonfire.UI.ValueFlows.ResourceNavigationLive, assigns) %>
   </section>
 
   <aside class="flex-1 hidden mt-2 lg:flex md:flex-shrink-0">
     <div class="h-full px-1 w-full">
-      <%= if @current_user do %>
-        <div class="sticky top-0 z-10 flex-1 px-2 py-2 mb-4 -mx-2 bg-white">
-          <%= live_component(@socket, Bonfire.UI.Social.SearchLive, assigns) %>
-        </div>
+      <%= for component <- Bonfire.Common.Config.get([:ui, :resource_widgets], []) do %>
+        <%=
+          live_component(
+            @socket,
+            component,
+            assigns_clean(assigns)
+          )
+        %>
       <% end %>
     </div>
   </aside>

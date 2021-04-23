@@ -8,7 +8,7 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
   alias Bonfire.Web.LivePlugs
   alias Bonfire.Me.Users
   alias Bonfire.Me.Web.{CreateUserLive, LoggedDashboardLive}
-  alias Bonfire.UI.Reflow.ResourceWidget
+  # alias Bonfire.UI.Reflow.ResourceWidget
 
   def mount(params, session, socket) do
 
@@ -32,6 +32,7 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
       page: "Resource",
       selected_tab: "about",
       smart_input: false,
+      resource: "1234",
       list: intents,
       main_labels: [
         %{id: 1, name: "Frontend dev", items: 5, color: "blue"},
