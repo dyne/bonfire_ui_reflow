@@ -21,10 +21,10 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
     ]
   end
 
-  defp mounted(params, session, socket) do
+  defp mounted(%{"id"=> id} = _params, _session, socket) do
 
-    intents = all_intents(socket)
-    IO.inspect(intents)
+    resource = economic_resource(%{id: id}, socket)
+    IO.inspect(resource)
 
     {:ok, socket
     |> assign(
@@ -32,8 +32,8 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
       page: "Resource",
       selected_tab: "about",
       smart_input: false,
-      resource: "1234",
-      list: intents,
+      # resource: "1234",
+      resource: resource,
       main_labels: [
         %{id: 1, name: "Frontend dev", items: 5, color: "blue"},
         %{id: 2, name: "Backend dev", items: 0, color: "yellow"},
@@ -43,25 +43,30 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
     )}
   end
 
-  def handle_info({:loc, location}, socket) do
-    IO.inspect(location, label: "LOCATION:")
-    {:noreply, socket}
-  end
-
-
   @graphql """
-    {
-      intents {
+  query($id: ID) {
+    economic_resource(id: $id) {
+      id
+      name
+      note
+      image
+      current_location {
         id
         name
-        provider
-        receiver
-        at_location
+        mappable_address
+      }
+      onhand_quantity {
+        id
+        has_numerical_value
+        has_unit {
+          label
+          symbol
+        }
       }
     }
+  }
   """
-  def intents(params \\ %{}, socket), do: liveql(socket, :intents, params)
-  def all_intents(socket), do: intents(socket)
+  def economic_resource(params \\ %{}, socket), do: liveql(socket, :economic_resource, params)
 
 
 end

@@ -7,7 +7,12 @@
 
   <aside class="flex-1 hidden mt-2 lg:flex md:flex-shrink-0">
     <div class="h-full px-1 w-full">
-      <%= for component <- Bonfire.Common.Config.get([:ui, :resource_widgets], []) do %>
+      <%= for component <- Bonfire.Common.Config.get([:ui, :resource_widgets], [
+      Bonfire.UI.Social.SearchWidgetLive,
+      Bonfire.UI.Social.SubscribeWidgetLive,
+      Bonfire.UI.ValueFlows.LocationWidgetLive,
+      Bonfire.UI.Social.HashtagsWidgetLive,
+   ]) do %>
         <%=
           live_component(
             @socket,

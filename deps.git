@@ -7,4 +7,4 @@ bonfire_data_social="https://github.com/bonfire-networks/bonfire_data_social#mai
 pointers = "https://github.com/commonspub/pointers#main"
 bonfire_ui_valueflows="https://github.com/bonfire-networks/bonfire_ui_valueflows#main"
 bonfire_valueflows="https://github.com/bonfire-networks/bonfire_valueflows#main"
-absinthe_client="https://github.com/mayel/absinthe_client#master"
+absinthe_client="https://github.com/bonfire-networks/absinthe_client"
