@@ -17,7 +17,10 @@
           live_component(
             @socket,
             component,
-            assigns_clean(assigns)
+            assigns_merge(assigns,
+            location: @resource.current_location,
+            tags: @resource.tags
+            )
           )
         %>
       <% end %>

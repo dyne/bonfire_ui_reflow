@@ -63,6 +63,19 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
           symbol
         }
       }
+      tags {
+        __typename
+        ...on Tag {
+          id
+          name
+          summary
+        }
+        ...on Category {
+          id
+          name
+          summary
+        }
+      }
     }
   }
   """
