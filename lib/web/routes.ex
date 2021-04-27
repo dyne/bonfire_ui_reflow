@@ -9,6 +9,8 @@ defmodule Bonfire.UI.Reflow.Routes do
       scope "/", Bonfire.UI.Reflow do
         pipe_through :browser
         live "/resource/:id", ResourceLive
+        live "/process/:id", ProcessLive
+        live "/process/:id/:tab", ProcessLive
       end
 
     end
