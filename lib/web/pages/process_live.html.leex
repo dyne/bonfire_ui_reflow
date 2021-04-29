@@ -2,9 +2,6 @@
   <section class="w-center min-h-screen border-l border-r bg-blueGray-50">
     <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive,
       current_user: @current_user,
-      name: e(@current_user, :profile, :name, "Anonymous"),
-      user_image: avatar_url(@current_user),
-      username: e(@current_user, :character, :username, ""),
       page_title: @page_title,
       page: @page,
       smart_input: @smart_input,
@@ -16,7 +13,7 @@
       smart_input_text: e(assigns, :smart_input_text, "") )%>
     <%= live_component(@socket, Bonfire.UI.ValueFlows.ProcessHeroLive, assigns_clean(assigns)) %>
     <%= live_component(@socket, Bonfire.UI.Coordination.CreateIntentWithResourceLive, assigns_clean(assigns)) %>
-    <%= live_component(@socket, Bonfire.UI.ValueFlows.SelectEconomicEventLive, user_image: avatar_url(@current_user))%>
+    <%= live_component(@socket, Bonfire.UI.ValueFlows.SelectEconomicEventLive, current_user: @current_user)%>
   </section>
   <aside class="flex-1 hidden mt-2 lg:flex md:flex-shrink-0"><div class="h-full px-1 w-full"></div></aside>
 </main>
