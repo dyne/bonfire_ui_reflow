@@ -1,5 +1,5 @@
 <main class="lg:flex lg:space-x-4">
-  <section class="w-center min-h-screen border-l border-r">
+  <section class="w-center min-h-screen border-l border-r bg-blueGray-50">
     <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive,
       current_user: @current_user,
       name: e(@current_user, :profile, :name, "Anonymous"),
@@ -15,22 +15,8 @@
       smart_input_placeholder: e(assigns, :smart_input_placeholder, ""),
       smart_input_text: e(assigns, :smart_input_text, "") )%>
     <%= live_component(@socket, Bonfire.UI.ValueFlows.ProcessHeroLive, assigns_clean(assigns)) %>
-
-
-    <div class="flex p-6 m-4 flex-col place-content-center rounded-lg bg-blueGray-50 hover:bg-glueGray-100 border-gray-300 border-dashed border-4">
-        <div class="inline-block mx-auto text-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400 mx-auto" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd" />
-            <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
-          </svg>
-          <div class="text-gray-400 mt-2 text-sm font-bold">Create an output for this process</div>
-        </div>
-    </div>
-
-
-
-
-    <%= live_component(@socket, Bonfire.UI.ValueFlows.CreateEconomicEventLive, user_image: avatar_url(@current_user))%>
+    <%= live_component(@socket, Bonfire.UI.Coordination.CreateIntentWithResourceLive, assigns_clean(assigns)) %>
+    <%= live_component(@socket, Bonfire.UI.ValueFlows.SelectEconomicEventLive, user_image: avatar_url(@current_user))%>
   </section>
   <aside class="flex-1 hidden mt-2 lg:flex md:flex-shrink-0"><div class="h-full px-1 w-full"></div></aside>
 </main>
