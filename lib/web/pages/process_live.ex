@@ -32,10 +32,23 @@ defmodule Bonfire.UI.Reflow.ProcessLive do
       page: "process",
       selected_tab: "events",
       smart_input: false,
-      process: "1234",
+      process: process(%{id: id}, socket)
       # resource: resource,
     )}
   end
+
+
+  @graphql """
+    query($id: ID) {
+      process(id: $id) {
+        id
+        name
+        note
+        finished
+      }
+    }
+  """
+  def process(params \\ %{}, socket), do: liveql(socket, :process, params)
 
 
   defdelegate handle_params(params, attrs, socket), to: Bonfire.Web.LiveHandler
