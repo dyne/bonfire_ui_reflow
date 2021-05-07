@@ -1,5 +1,5 @@
-<main class="lg:flex lg:space-x-4">
-  <section class="w-center min-h-screen border-l border-r bg-blueGray-50">
+<main class="lg:flex">
+  <section class="w-center min-h-screen shadow-tick bg-white mt-4 rounded-lg bg-blueGray-50">
     <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive,
       current_user: @current_user,
       page_title: @page_title,
@@ -13,5 +13,5 @@
     <%= live_component(@socket, Bonfire.UI.Coordination.CreateIntentWithResourceLive, assigns_clean(assigns)) %>
     <%= live_component(@socket, Bonfire.UI.ValueFlows.SelectEconomicEventLive, current_user: @current_user)%>
   </section>
-  <aside class="flex-1 hidden mt-2 lg:flex md:flex-shrink-0"><div class="h-full px-1 w-full"></div></aside>
+  <aside class="flex-1 hidden mt-2 lg:flex md:flex-shrink-0"><div class="h-full px-3 w-full"></div></aside>
 </main>
