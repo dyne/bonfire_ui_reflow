@@ -1,11 +1,12 @@
-<div 
+<Context put={{current_user: @current_user}}>
+<div
   x-cloak
   x-data="{
     open_create_intent_with_resource: false,
   }"
   @click.away="open_create_intent_with_resource=false"
   >
-  <div 
+  <div
     @keydown.window.escape="open_create_intent_with_resource = false"
     @click = "open_create_intent_with_resource = true"
     x-show.transition.duration.200ms="!open_create_intent_with_resource"
@@ -20,7 +21,7 @@
   </div>
 
   <div
-      @click.away="open_create_intent_with_resource=false" 
+      @click.away="open_create_intent_with_resource=false"
       x-transition:enter="transition ease-out duration-200"
       x-transition:enter-start="opacity-0 -translate-y-1"
       x-transition:enter-end="opacity-100 translate-y-0"
@@ -31,3 +32,4 @@
      <Bonfire.UI.ValueFlows.CreateEconomicEventLive action="produce" remove="open_create_intent_with_resource=false" />
   </div>
 </div>
+</Context>
