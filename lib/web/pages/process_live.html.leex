@@ -10,7 +10,7 @@
       smart_input_placeholder: e(assigns, :smart_input_placeholder, ""),
       smart_input_text: e(assigns, :smart_input_text, "") )%>
     <%= live_component(@socket, Bonfire.UI.ValueFlows.ProcessHeroLive, assigns_clean(assigns)) %>
-    <%= live_component(@socket, Bonfire.UI.Coordination.CreateIntentWithResourceLive, assigns_clean(assigns)) %>
+    <%= live_component(@socket, Bonfire.UI.Coordination.ProduceEventLive, assigns_clean(assigns)) %>
     <%= live_component(@socket, Bonfire.UI.ValueFlows.SelectEconomicEventLive, current_user: @current_user)%>
   </section>
   <aside class="flex-1 hidden mt-2 lg:flex md:flex-shrink-0"><div class="h-full px-1 w-full"></div></aside>
