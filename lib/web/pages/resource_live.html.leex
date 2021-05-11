@@ -8,7 +8,6 @@
   <aside class="flex-1 hidden mt-2 lg:flex md:flex-shrink-0">
     <div class="h-full px-3 w-full">
       <%= for component <- Bonfire.Common.Config.get([:ui, :resource, :widgets], [
-      Bonfire.UI.Social.SearchWidgetLive,
       Bonfire.UI.Social.SubscribeWidgetLive,
       Bonfire.UI.ValueFlows.LocationWidgetLive,
       Bonfire.UI.Social.HashtagsWidgetLive,

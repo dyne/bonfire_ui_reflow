@@ -8,7 +8,6 @@
   <div 
     @keydown.window.escape="open_create_intent_with_resource = false"
     @click = "open_create_intent_with_resource = true"
-    x-show.transition.duration.200ms="!open_create_intent_with_resource"
     class="cursor-pointer flex p-6 m-4 flex-col place-content-center rounded-lg bg-blueGray-50 hover:bg-blueGray-100 border-gray-300 border-dashed border-4">
       <div class="inline-block mx-auto text-center">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400 mx-auto" viewBox="0 0 20 20" fill="currentColor">
@@ -18,16 +17,19 @@
         <div class="text-gray-400 mt-2 text-sm font-bold">Create an output for this process</div>
       </div>
   </div>
-
-  <div
-      @click.away="open_create_intent_with_resource=false" 
-      x-transition:enter="transition ease-out duration-200"
-      x-transition:enter-start="opacity-0 -translate-y-1"
-      x-transition:enter-end="opacity-100 translate-y-0"
-      x-transition:leave="transition ease-in duration-150"
-      x-transition:leave-start="opacity-100 translate-y-0"
-      x-transition:leave-end="opacity-0 -translate-y-1"
-      x-show="open_create_intent_with_resource">
-     <Bonfire.UI.ValueFlows.CreateEconomicEventLive action="produce" remove="open_create_intent_with_resource=false" />
+  <div 
+    x-show="open_create_intent_with_resource" 
+    class="fixed z-10 inset-0 overflow-y-auto" 
+    aria-labelledby="modal-title" 
+    x-ref="dialog" 
+    aria-modal="true">
+    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <div x-show="open_create_intent_with_resource" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-description="Background overlay, show/hide based on modal state." class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" @click="open_create_intent_with_resource = false" aria-hidden="true"></div>
+      <!-- This element is to trick the browser into centering the modal contents. -->
+      <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+      <div x-show="open_create_intent_with_resource" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" x-description="Modal panel, show/hide based on modal state." class="inline-block align-bottom bg-white rounded-lg text-left shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+        <Bonfire.UI.ValueFlows.CreateEconomicEventLive action="produce" remove="open_create_intent_with_resource=false" />
+      </div>
+    </div>
   </div>
 </div>
