@@ -1,5 +1,5 @@
 <main class="lg:flex">
-  <section class="w-center min-h-screen shadow-tick bg-white mt-4 rounded-lg bg-blueGray-50">
+  <section class="w-full mr-4 min-h-screen shadow-tick bg-white mt-4 rounded-lg">
     <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive,
       current_user: @current_user,
       page_title: @page_title,
@@ -10,8 +10,27 @@
       smart_input_placeholder: e(assigns, :smart_input_placeholder, ""),
       smart_input_text: e(assigns, :smart_input_text, "") )%>
     <%= live_component(@socket, Bonfire.UI.ValueFlows.ProcessHeroLive, assigns_clean(assigns)) %>
-    <%= live_component(@socket, Bonfire.UI.Coordination.ProduceEventLive, assigns_clean(assigns)) %>
-    <%= live_component(@socket, Bonfire.UI.ValueFlows.SelectEconomicEventLive, current_user: @current_user)%>
+
+    <nav
+      role="tablist"
+      class="mt-4 mb-2 p-2 flex bg-blueGray-100 border-b-4"
+      aria-label="Switch between my feed, instance or fediverse tabs">
+        <%= live_patch to: "/list/#{@process.id}", class: "px-6" do %>
+        <button
+          role="tab"
+          aria-current="<%= if @selected_tab == "activities", do: "page" %>"
+          class="border-b-4 text-center w-full capitalize text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm hover:border-b-4 border-gray-200 -mb-4 <%= if @selected_tab == "activities", do: "hover:text-pink-600 hover:border-pink-500 border-pink-500 text-pink-600 font-bold" %>">
+          Activities
+        </button>
+        <% end %>
+    </nav>
+    <%= live_component(@socket, Bonfire.UI.Reflow.ListNavigationLive, assigns_merge(assigns,
+        output_of_id: @process.id,
+        provider_id: @current_user.id,
+        current_user: @current_user,
+        action: "work",
+        intent_url: "/task/"
+      )) %>
+
   </section>
-  <aside class="flex-1 hidden mt-2 lg:flex md:flex-shrink-0"><div class="h-full px-3 w-full"></div></aside>
 </main>
