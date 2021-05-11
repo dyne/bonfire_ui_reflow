@@ -43,6 +43,7 @@ defmodule Bonfire.UI.Reflow.ProcessLive do
       process(id: $id) {
         id
         name
+        has_end
         note
         finished
       }
