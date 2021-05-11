@@ -17,8 +17,8 @@
             @socket,
             component,
             assigns_merge(assigns,
-            location: @resource.current_location,
-            tags: @resource.tags
+            location: e(@resource, :current_location, nil),
+            tags: e(@resource, :tags, [])
             )
           )
         %>

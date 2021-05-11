@@ -66,6 +66,12 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
           symbol
         }
       }
+      conforms_to {
+        id
+        name
+        note
+        image
+      }
       tags {
         __typename
         ...on Tag {
