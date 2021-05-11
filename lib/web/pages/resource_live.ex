@@ -12,7 +12,7 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
 
   def mount(params, session, socket) do
 
-    IO.inspect(pre_plugs: socket)
+    # IO.inspect(pre_plugs: socket)
 
     LivePlugs.live_plug params, session, socket, [
       LivePlugs.LoadCurrentAccount,
@@ -24,7 +24,7 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
   end
 
   defp mounted(%{"id"=> id} = _params, _session, socket) do
-    IO.inspect(post_plugs: socket)
+    # IO.inspect(post_plugs: socket)
 
     resource = economic_resource(%{id: id}, socket)
     IO.inspect(resource)

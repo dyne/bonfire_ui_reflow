@@ -68,8 +68,8 @@
       </div>
     </div>
     <div class="ml-4 flex space-x-2 items-center">
-      <Bonfire.UI.ValueFlows.SelectEconomicEventLive current_user={{@current_user}} />
       <Bonfire.UI.Coordination.ProduceEventLive />
+      <Bonfire.UI.ValueFlows.SelectEconomicEventLive />
     </div>
   </div>
 </div>

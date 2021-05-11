@@ -26,8 +26,6 @@
     </nav>
     <%= live_component(@socket, Bonfire.UI.Reflow.ListNavigationLive, assigns_merge(assigns,
         output_of_id: @process.id,
-        provider_id: @current_user.id,
-        current_user: @current_user,
         action: "work",
         intent_url: "/task/"
       )) %>
