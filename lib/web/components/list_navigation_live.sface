@@ -68,8 +68,8 @@
       </div>
     </div>
     <div class="ml-4 flex space-x-2 items-center">
-      <Bonfire.UI.Coordination.ProduceEventLive />
-      <Bonfire.UI.ValueFlows.SelectEconomicEventLive />
+      <Bonfire.UI.Coordination.ProduceEventLive output_of_id={{e(assigns, :output_of_id, nil)}}  />
+      <Bonfire.UI.ValueFlows.SelectEconomicEventLive output_of_id={{e(assigns, :output_of_id, nil)}}  />
     </div>
   </div>
 </div>
