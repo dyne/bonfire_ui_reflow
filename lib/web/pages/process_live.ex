@@ -23,20 +23,26 @@ defmodule Bonfire.UI.Reflow.ProcessLive do
 
   defp mounted(%{"id"=> id} = _params, _session, socket) do
 
-    # resource = economic_resource(%{id: id}, socket)
-    # IO.inspect(resource)
-
     {:ok, socket
     |> assign(
       page_title: "process",
       page: "process",
       selected_tab: "events",
       smart_input: false,
-      process: process(%{id: id}, socket)
+      process: process(%{id: id}, socket) |> IO.inspect()
       # resource: resource,
     )}
   end
 
+  @quantity_fields """
+  {
+    has_numerical_value
+    has_unit {
+      label
+      symbol
+    }
+  }
+  """
 
   @graphql """
     query($id: ID) {
@@ -46,6 +52,65 @@ defmodule Bonfire.UI.Reflow.ProcessLive do
         note
         has_end
         finished
+        outputs {
+          id
+          __typename
+          note
+          provider
+          receiver
+          action {
+            label
+          }
+          resource_quantity {
+            has_numerical_value
+            has_unit {
+              label
+              symbol
+            }
+          }
+          effort_quantity {
+            has_numerical_value
+            has_unit {
+              label
+              symbol
+            }
+          }
+          resource_inventoried_as {
+            id
+            name
+            note
+            image
+            onhand_quantity {
+              has_numerical_value
+              has_unit {
+                label
+                symbol
+              }
+            }
+            accounting_quantity {
+              has_numerical_value
+              has_unit {
+                label
+                symbol
+              }
+            }
+          }
+          to_resource_inventoried_as {
+            id
+            name
+            note
+            image
+            onhand_quantity #{@quantity_fields}
+            accounting_quantity {
+              has_numerical_value
+              has_unit {
+                label
+                symbol
+              }
+            }
+          }
+
+        }
       }
     }
   """

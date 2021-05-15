@@ -30,5 +30,13 @@
         intent_url: "/task/"
       )) %>
 
+    <%= for event <- e(@process, :outputs, []) do %>
+      <%= live_component(
+          @socket,
+          Bonfire.UI.Social.ActivityLive,
+          activity: event,
+          current_user: @current_user
+        ) %>
+    <% end %>
   </section>
 </main>
