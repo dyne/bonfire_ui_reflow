@@ -1,0 +1,12 @@
+<div class="container h-screen max-w-screen-lg mx-auto">
+
+  <%= live_component(
+    @socket,
+    Bonfire.Geolocate.MapLive,
+    id: :VFMap,
+    current_user: @current_user,
+    places: @places,
+    fetch_place_things_fn: @fetch_place_things_fn
+  )  %>
+
+</div>
