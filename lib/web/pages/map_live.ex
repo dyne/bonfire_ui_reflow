@@ -22,12 +22,35 @@ defmodule Bonfire.UI.Reflow.MapLive do
       page_title: "Map of events",
       page: "map",
       selected_tab: "about",
-      places: fetch_place_things(socket),
-      fetch_place_things_fn: &Bonfire.UI.Reflow.MapLive.fetch_place_things/2
+      places: fetch_resources_places(socket),
+      fetch_place_things_fn: &Bonfire.UI.Reflow.MapLive.fetch_resources_places/2
     )}
   end
 
-  def fetch_place_things(filters \\ [], _socket) do
+
+  def fetch_resources_places(filters \\ [], _socket) do
+    with {:ok, things} <-
+          ValueFlows.EconomicResource.EconomicResources.many([{:preload, :current_location}] ++ filters) do
+      # IO.inspect(things)
+
+        things
+        |> Enum.map(
+          &Map.merge(
+            Map.get(&1, :current_location) || %{},
+            &1
+          )
+        )
+        |> Enum.filter(&Map.has_key?(&1, :geom))
+        # |> IO.inspect(label: "fetch_place_things")
+
+    else
+      e ->
+        IO.inspect(error: e)
+        nil
+    end
+  end
+
+  def fetch_events_places(filters \\ [], _socket) do
     with {:ok, things} <-
            ValueFlows.EconomicEvent.EconomicEvents.many([{:preload, :locations}] ++ filters) do
       # IO.inspect(things)
