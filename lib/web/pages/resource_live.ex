@@ -53,6 +53,7 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
       name
       note
       image
+      primary_accountable
       current_location {
         id
         name
@@ -85,6 +86,7 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
           summary
         }
       }
+      trace #{Bonfire.UI.Reflow.ProcessLive.event_fields}
     }
   }
   """

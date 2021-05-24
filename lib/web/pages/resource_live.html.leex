@@ -3,6 +3,16 @@
     <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive, assigns_clean(assigns)) %>
     <%= live_component(@socket, Bonfire.UI.ValueFlows.ResourceHeroLive, assigns_clean(assigns)) %>
     <%= live_component(@socket, Bonfire.UI.ValueFlows.ResourceNavigationLive, assigns_clean(assigns)) %>
+
+    <%= for event <- e(@resource, :trace, []) do %>
+      <%= live_component(
+          @socket,
+          Bonfire.UI.Social.ActivityLive,
+          activity: event,
+          current_user: @current_user
+        ) %>
+    <% end %>
+
   </section>
 
   <aside class="flex-1 hidden mt-2 lg:flex md:flex-shrink-0">
@@ -10,6 +20,7 @@
       <%= for component <- Bonfire.Common.Config.get([:ui, :resource, :widgets], [
       Bonfire.UI.Social.SubscribeWidgetLive,
       Bonfire.UI.ValueFlows.LocationWidgetLive,
+      Bonfire.UI.ValueFlows.PrimaryAccountableWidgetLive,
       Bonfire.UI.Social.HashtagsWidgetLive,
    ]) do %>
         <%=
@@ -18,6 +29,7 @@
             component,
             assigns_merge(assigns,
             location: e(@resource, :current_location, nil),
+            primary_accountable: e(@resource, :primary_accountable, nil),
             tags: e(@resource, :tags, [])
             )
           )

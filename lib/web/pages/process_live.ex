@@ -44,6 +44,48 @@ defmodule Bonfire.UI.Reflow.ProcessLive do
   }
   """
 
+  @resource_fields """
+  {
+    id
+    name
+    note
+    image
+    onhand_quantity #{@quantity_fields}
+    accounting_quantity #{@quantity_fields}
+  }
+  """
+
+  @event_fields """
+  {
+    id
+    __typename
+    note
+    provider
+    receiver
+    action {
+      label
+    }
+    resource_quantity {
+      has_numerical_value
+      has_unit {
+        label
+        symbol
+      }
+    }
+    effort_quantity {
+      has_numerical_value
+      has_unit {
+        label
+        symbol
+      }
+    }
+    resource_inventoried_as #{@resource_fields}
+    to_resource_inventoried_as #{@resource_fields}
+  }
+  """
+
+  def event_fields, do: @event_fields
+
   @graphql """
     query($id: ID) {
       process(id: $id) {
@@ -52,65 +94,7 @@ defmodule Bonfire.UI.Reflow.ProcessLive do
         note
         has_end
         finished
-        outputs {
-          id
-          __typename
-          note
-          provider
-          receiver
-          action {
-            label
-          }
-          resource_quantity {
-            has_numerical_value
-            has_unit {
-              label
-              symbol
-            }
-          }
-          effort_quantity {
-            has_numerical_value
-            has_unit {
-              label
-              symbol
-            }
-          }
-          resource_inventoried_as {
-            id
-            name
-            note
-            image
-            onhand_quantity {
-              has_numerical_value
-              has_unit {
-                label
-                symbol
-              }
-            }
-            accounting_quantity {
-              has_numerical_value
-              has_unit {
-                label
-                symbol
-              }
-            }
-          }
-          to_resource_inventoried_as {
-            id
-            name
-            note
-            image
-            onhand_quantity #{@quantity_fields}
-            accounting_quantity {
-              has_numerical_value
-              has_unit {
-                label
-                symbol
-              }
-            }
-          }
-
-        }
+        outputs #{@event_fields}
       }
     }
   """
