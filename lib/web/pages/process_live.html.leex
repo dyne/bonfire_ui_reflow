@@ -1,5 +1,5 @@
 <main class="lg:flex">
-  <section class="w-full mr-4 min-h-screen shadow-tick bg-white mt-4 rounded-lg">
+  <section class="w-full min-h-screen mb-4 bg-white rounded-lg shadow">
     <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive,
       current_user: @current_user,
       page_title: @page_title,
@@ -12,14 +12,14 @@
     <%= live_component(@socket, Bonfire.UI.ValueFlows.ProcessHeroLive, assigns_clean(assigns)) %>
     <div class="block">
       <div class="px-5 border-b border-gray-200">
-        <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-          <a href="#" class="border-indigo-500 text-indigo-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" aria-current="page">
+        <nav class="flex -mb-px space-x-8" aria-label="Tabs">
+          <a href="#" class="px-1 py-4 text-sm font-medium text-indigo-600 border-b-2 border-indigo-500 whitespace-nowrap" aria-current="page">
             Activities
           </a>
         </nav>
       </div>
     </div>
-    <%#= live_component(@socket, Bonfire.UI.Reflow.ListNavigationLive, assigns_merge(assigns,
+    <%= live_component(@socket, Bonfire.UI.Reflow.ListNavigationLive, assigns_merge(assigns,
         output_of_id: @process.id,
         action: "work",
         intent_url: "/task/"
