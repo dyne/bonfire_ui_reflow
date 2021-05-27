@@ -10,6 +10,14 @@
       smart_input_placeholder: e(assigns, :smart_input_placeholder, ""),
       smart_input_text: e(assigns, :smart_input_text, "") )%>
     <%= live_component(@socket, Bonfire.UI.ValueFlows.ProcessHeroLive, assigns_clean(assigns)) %>
+
+      <%= live_component(@socket, Bonfire.UI.Reflow.ListNavigationLive, assigns_merge(assigns,
+      output_of_id: @process.id,
+      action: "work",
+      intent_url: "/task/"
+    )) %>
+
+
     <div class="block">
       <div class="px-5 border-b border-gray-200">
         <nav class="flex -mb-px space-x-8" aria-label="Tabs">
@@ -19,11 +27,7 @@
         </nav>
       </div>
     </div>
-    <%= live_component(@socket, Bonfire.UI.Reflow.ListNavigationLive, assigns_merge(assigns,
-        output_of_id: @process.id,
-        action: "work",
-        intent_url: "/task/"
-      )) %>
+
 
     <%= for event <- e(@process, :outputs, []) do %>
       <%= live_component(

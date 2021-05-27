@@ -34,6 +34,23 @@ defmodule Bonfire.UI.Reflow.ProcessLive do
     )}
   end
 
+  @process_fields_basic """
+  id
+  name
+  note
+  has_end
+  finished
+  """
+
+  @agent_fields """
+  {
+    id
+    name
+    image
+    display_username
+  }
+  """
+
   @quantity_fields """
   {
     has_numerical_value
@@ -55,13 +72,12 @@ defmodule Bonfire.UI.Reflow.ProcessLive do
   }
   """
 
-  @event_fields """
-  {
+  @event_fields_basic """
     id
     __typename
     note
-    provider
-    receiver
+    provider #{@agent_fields}
+    receiver #{@agent_fields}
     action {
       label
     }
@@ -72,6 +88,15 @@ defmodule Bonfire.UI.Reflow.ProcessLive do
         symbol
       }
     }
+
+    resource_inventoried_as #{@resource_fields}
+    to_resource_inventoried_as #{@resource_fields}
+  """
+
+  @event_fields """
+  {
+    #{@event_fields_basic}
+
     effort_quantity {
       has_numerical_value
       has_unit {
@@ -79,21 +104,20 @@ defmodule Bonfire.UI.Reflow.ProcessLive do
         symbol
       }
     }
-    resource_inventoried_as #{@resource_fields}
-    to_resource_inventoried_as #{@resource_fields}
+
+    output_of
+    input_of
   }
   """
 
+  def process_fields_basic, do: @process_fields_basic
+  def event_fields_basic, do: @event_fields_basic
   def event_fields, do: @event_fields
 
   @graphql """
     query($id: ID) {
       process(id: $id) {
-        id
-        name
-        note
-        has_end
-        finished
+        #{@process_fields_basic}
         outputs #{@event_fields}
       }
     }

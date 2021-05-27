@@ -10,6 +10,8 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
   alias Bonfire.Me.Web.{CreateUserLive, LoggedDashboardLive}
   # alias Bonfire.UI.Reflow.ResourceWidget
 
+  @recurse_limit 10
+
   def mount(params, session, socket) do
 
     # IO.inspect(pre_plugs: socket)
@@ -27,7 +29,7 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
     # IO.inspect(post_plugs: socket)
 
     resource = economic_resource(%{id: id}, socket)
-    IO.inspect(resource)
+    # IO.inspect(resource: resource)
 
     {:ok, socket
     |> assign(
@@ -46,26 +48,39 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
     )}
   end
 
+  @resource_fields_basic """
+    id
+    name
+    note
+    image
+    primary_accountable
+    onhand_quantity {
+      id
+      has_numerical_value
+      has_unit {
+        label
+        symbol
+      }
+    }
+  """
+
+  @track_trace """
+  (recurse_limit: #{@recurse_limit}){
+      __typename
+      ...on EconomicEvent {#{Bonfire.UI.Reflow.ProcessLive.event_fields_basic}}
+      ...on EconomicResource {#{@resource_fields_basic}}
+      ...on Process {#{Bonfire.UI.Reflow.ProcessLive.process_fields_basic}}
+    }
+  """
+
   @graphql """
   query($id: ID) {
     economic_resource(id: $id) {
-      id
-      name
-      note
-      image
-      primary_accountable
+      #{@resource_fields_basic}
       current_location {
         id
         name
         mappable_address
-      }
-      onhand_quantity {
-        id
-        has_numerical_value
-        has_unit {
-          label
-          symbol
-        }
       }
       conforms_to {
         id
@@ -86,11 +101,62 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
           summary
         }
       }
-      trace #{Bonfire.UI.Reflow.ProcessLive.event_fields}
+      track#{@track_trace}
+      trace#{@track_trace}
     }
   }
   """
   def economic_resource(params \\ %{}, socket), do: liveql(socket, :economic_resource, params)
+
+  # FIXME: looks like we can't have multiple liveql queries in same module?
+  # @graphql """
+  # query($id: ID) {
+  #   economic_resource(id: $id) {
+  #     track #{Bonfire.UI.Reflow.ProcessLive.event_fields}
+  #   }
+  # }
+  # """
+  # def track(params \\ %{}, socket), do: liveql(socket, :economic_resource, params)
+
+  # @graphql """
+  # query($id: ID) {
+  #   economic_resource(id: $id) {
+  #     trace #{Bonfire.UI.Reflow.ProcessLive.event_fields}
+  #   }
+  # }
+  # """
+  # def trace(params \\ %{}, socket), do: liveql(socket, :economic_resource, params)
+
+
+  def handle_params(%{"tab"=>"track"}, attrs, socket) do
+    resource = e(socket.assigns, :resource, nil)
+
+    if resource do
+      # resource = track(%{id: id}, socket)
+      # IO.inspect(track: resource)
+
+      {:noreply, socket
+      |> assign(
+        selected_tab: "track",
+        feed: e(resource, :track, []) |> IO.inspect(label: "track")
+      )}
+    end
+  end
+
+  def handle_params(_, attrs, socket) do
+    resource = e(socket.assigns, :resource, nil)
+
+    if resource do
+      # resource = trace(%{id: id}, socket)
+      # IO.inspect(trace: resource)
+
+      {:noreply, socket
+      |> assign(
+        selected_tab: "trace",
+        feed: e(resource, :trace, []) #|> IO.inspect(label: "trace")
+      )}
+    end
+  end
 
   defdelegate handle_params(params, attrs, socket), to: Bonfire.Web.LiveHandler
   def handle_event(action, attrs, socket), do: Bonfire.Web.LiveHandler.handle_event(action, attrs, socket, __MODULE__)
