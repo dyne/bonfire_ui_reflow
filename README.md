@@ -1,4 +1,4 @@
-# Bonfire:UI:ValueFlows
+# Bonfire:UI:Reflow
 
 An extension for [Bonfire](https://bonfire.cafe/) that handles:
 
