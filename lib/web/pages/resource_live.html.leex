@@ -1,5 +1,5 @@
 <main class="lg:flex">
-  <section class="w-center min-h-screen shadow-tick bg-white mt-4 rounded-lg">
+  <section class="min-h-screen mt-4 bg-white rounded-lg w-center shadow-tick">
     <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive, assigns_clean(assigns)) %>
     <%= live_component(@socket, Bonfire.UI.ValueFlows.ResourceHeroLive, assigns_clean(assigns)) %>
     <%= live_component(@socket, Bonfire.UI.ValueFlows.ResourceNavigationLive, assigns_clean(assigns)) %>
@@ -16,12 +16,11 @@
   </section>
 
   <aside class="flex-1 hidden mt-2 lg:flex md:flex-shrink-0">
-    <div class="h-full px-3 w-full">
+    <div class="w-full h-full px-3">
       <%= for component <- Bonfire.Common.Config.get([:ui, :resource, :widgets], [
       Bonfire.UI.Social.SubscribeWidgetLive,
       Bonfire.UI.ValueFlows.LocationWidgetLive,
       Bonfire.UI.ValueFlows.PrimaryAccountableWidgetLive,
-      Bonfire.UI.Social.HashtagsWidgetLive,
    ]) do %>
         <%=
           live_component(
