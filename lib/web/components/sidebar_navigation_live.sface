@@ -14,7 +14,7 @@
       <span class="text-sm font-semibold capitalize" id="navigation_browse">browse</span>
     </LivePatch>
 
-    <LivePatch :if={{@current_user}} to={{"/user/" <> e(@current_user, :character, :username, "anon")}} class={{"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-gray-700 dark:text-gray-200 focus:outline-none focus:text-gray-900 focus:bg-gray-50 text-gray-600", "bg-blueGray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200": @page == "profile"}}>
+    <LivePatch :if={{@current_user}} to={{path(@current_user)}} class={{"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-gray-700 dark:text-gray-200 focus:outline-none focus:text-gray-900 focus:bg-gray-50 text-gray-600", "bg-blueGray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200": @page == "profile"}}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 group-hover:bg-blueGray-300">
       <svg
         aria-labelledby="navigation_profile"
@@ -28,13 +28,13 @@
     </LivePatch>
 
 
-    <LivePatch to={{"/processes"}} class={{"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-gray-700 dark:text-gray-200 focus:outline-none focus:text-gray-900 focus:bg-gray-50 text-gray-600", "bg-blueGray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200": @page == "processes"}}> 
+    <LivePatch to={{"/processes"}} class={{"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-gray-700 dark:text-gray-200 focus:outline-none focus:text-gray-900 focus:bg-gray-50 text-gray-600", "bg-blueGray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200": @page == "processes"}}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 group-hover:bg-blueGray-300">
-        <svg 
+        <svg
           aria-labelledby="navigation_lists"
-          xmlns="http://www.w3.org/2000/svg" 
+          xmlns="http://www.w3.org/2000/svg"
           class={{"w-5 h-5 transition duration-150 ease-in-out text-gray-600", "text-gray-800": @page == "processes"}}
-          viewBox="0 0 24 24" 
+          viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
         >
@@ -42,7 +42,7 @@
       </span>
       <span class="text-sm font-semibold capitalize" id="navigation_profile">all processes</span>
     </LivePatch>
-    
+
     <LivePatch :if={{@current_user}} to={{"/reflow/map"}} class={{"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-gray-700 dark:text-gray-200 focus:outline-none focus:text-gray-900 focus:bg-gray-50 text-gray-600", "bg-blueGray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200": @page == "map"}}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 hover:bg-blueGray-300">
       <svg
