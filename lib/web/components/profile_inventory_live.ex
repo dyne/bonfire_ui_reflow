@@ -1,7 +1,11 @@
 defmodule Bonfire.UI.Reflow.ProfileInventoryLive do
-  use Bonfire.Web, :live_component
+  use Bonfire.Web, :stateless_component
   use AbsintheClient, schema: Bonfire.GraphQL.Schema, action: [mode: :internal]
 
+  prop user, :map
+  prop resources, :map
+  prop selected_tab, :string
+  
   def update(assigns, socket) do
 
     resources = agent_resources(%{id: assigns.user.id}, socket)

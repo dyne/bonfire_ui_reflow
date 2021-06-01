@@ -1,9 +1,8 @@
 <Context put={{current_user: @current_user}}>
 <div>
-  <div class="p-3 border-b flex items-center">
+  <div class="flex items-center p-3 border-b">
 
-    <div class="ml-4 flex space-x-2 items-center">
-      <Bonfire.UI.Coordination.ProduceEventLive output_of_id={{e(assigns, :output_of_id, nil)}}  />
+    <div class="flex items-center">
       <Bonfire.UI.ValueFlows.SelectEconomicEventLive output_of_id={{e(assigns, :output_of_id, nil)}}  />
     </div>
   </div>
