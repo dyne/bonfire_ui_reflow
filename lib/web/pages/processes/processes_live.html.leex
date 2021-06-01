@@ -1,5 +1,5 @@
 <main class="lg:flex">
-  <section class="w-full min-h-screen bg-white shadow">
+  <section class="w-full min-h-screen bg-white shadow dark:bg-gray-700">
     <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive,
       current_user: @current_user,
       page_title: @page_title,
@@ -14,7 +14,7 @@
 
     <div class="">
       
-      <div class="flex flex-col divide-y">
+      <div class="flex flex-col divide-y dark:divide-gray-600">
         <%= for process <- @processes do %>
           <%= live_component(@socket, Bonfire.UI.Social.Activity.ProcessReflowLive, object: process, within_feed: false) %>
         <% end %>
