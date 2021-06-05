@@ -1,19 +1,19 @@
 <main class="lg:flex">
   <section class="w-full min-h-screen bg-white shadow dark:bg-gray-700">
     <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive,
-      current_user: @current_user,
+
       page_title: @page_title,
       page: @page,
       smart_input: @smart_input,
-      smart_input_private: e(assigns, :smart_input_private, false),
-      create_activity_type: e(assigns, :create_activity_type, nil ),
+
+
       reply_to_id: nil,
       reply_to_thread_id: nil,
       smart_input_placeholder: e(assigns, :smart_input_placeholder, ""),
       smart_input_text: e(assigns, :smart_input_text, "") )%>
 
     <div class="">
-      
+
       <div class="flex flex-col divide-y dark:divide-gray-600">
         <%= for process <- @processes do %>
           <%= live_component(@socket, Bonfire.UI.Social.Activity.ProcessReflowLive, object: process, within_feed: false) %>

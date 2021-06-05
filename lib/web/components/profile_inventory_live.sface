@@ -1,14 +1,14 @@
 <div class={{"bg-white": e(assigns, :current_user, nil) != nil}}>
-  <Bonfire.UI.Social.ProfileHeroFullLive user={{@user}} current_user={{@current_user}} />
+  <Bonfire.UI.Social.ProfileHeroFullLive user={{@user}}  />
   <div class={{"mt-4 bg-white shadow rounded-lg": e(assigns, :current_user, nil) == nil}}>
     <Bonfire.UI.Social.ProfileNavigationLive selected_tab={{@selected_tab}} user={{@user}} />
     <div class="flex flex-col p-4 space-y-3">
       <div :for={{resource <- @resources}}>
-        <Bonfire.UI.ValueFlows.ResourceItemLive 
+        <Bonfire.UI.ValueFlows.ResourceItemLive
           resource={{resource}}
           resource_url_prefix={{@resource_url_prefix}}
         />
       </div>
-    </div>  
+    </div>
   </div>
 </div>

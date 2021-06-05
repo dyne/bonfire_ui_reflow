@@ -1,4 +1,3 @@
-<Context get={{ current_user: current_user }}>
   <div class="flex flex-col space-y-1">
     <LivePatch to="/browse" class={{"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-gray-700 dark:text-gray-200 focus:outline-none focus:text-gray-900 focus:bg-gray-50 text-gray-600", "bg-blueGray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200": @page == "browse"}}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 group-hover:bg-blueGray-300">
@@ -14,7 +13,7 @@
       <span class="text-sm font-semibold capitalize" id="navigation_browse">browse</span>
     </LivePatch>
 
-    <LivePatch :if={{@current_user}} to={{path(@current_user)}} class={{"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-gray-700 dark:text-gray-200 focus:outline-none focus:text-gray-900 focus:bg-gray-50 text-gray-600", "bg-blueGray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200": @page == "profile"}}>
+    <LivePatch :if={{e(assigns, :current_user, nil)}} to={{path(e(assigns, :current_user, nil))}} class={{"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-gray-700 dark:text-gray-200 focus:outline-none focus:text-gray-900 focus:bg-gray-50 text-gray-600", "bg-blueGray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200": @page == "profile"}}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 group-hover:bg-blueGray-300">
       <svg
         aria-labelledby="navigation_profile"
@@ -43,7 +42,7 @@
       <span class="text-sm font-semibold capitalize" id="navigation_profile">all processes</span>
     </LivePatch>
 
-    <LivePatch :if={{@current_user}} to={{"/reflow/map"}} class={{"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-gray-700 dark:text-gray-200 focus:outline-none focus:text-gray-900 focus:bg-gray-50 text-gray-600", "bg-blueGray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200": @page == "map"}}>
+    <LivePatch :if={{e(assigns, :current_user, nil)}} to={{"/reflow/map"}} class={{"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-gray-700 dark:text-gray-200 focus:outline-none focus:text-gray-900 focus:bg-gray-50 text-gray-600", "bg-blueGray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200": @page == "map"}}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 hover:bg-blueGray-300">
       <svg
         aria-labelledby="navigation_profile"
@@ -57,4 +56,3 @@
       <span class="text-sm font-semibold capitalize" id="navigation_profile">Map</span>
     </LivePatch>
   </div>
-</Context>

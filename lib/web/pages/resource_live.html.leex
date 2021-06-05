@@ -8,8 +8,7 @@
       <%= live_component(
           @socket,
           Bonfire.UI.Social.ActivityLive,
-          activity: event,
-          current_user: @current_user
+          activity: event
         ) %>
     <% end %>
 
