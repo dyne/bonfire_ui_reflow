@@ -16,7 +16,7 @@
     </div>
   <% end %>
 
-  <%= if !e(assigns, :current_user, nil) do %>
+  <%= if !current_user(assigns) do %>
     <div class="container h-screen max-w-screen-lg mx-auto">
       <%= live_component(@socket, Bonfire.UI.Social.LogoHeaderLive, assigns_clean(assigns)) %>
       <%= live_component(@socket, Bonfire.UI.Social.HeaderGuestLive, assigns_clean(assigns)) %>
