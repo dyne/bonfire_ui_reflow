@@ -1,5 +1,5 @@
 <main class="lg:flex">
-  <section class="w-full min-h-screen mb-4 bg-white rounded-lg shadow dark:bg-gray-700">
+  <section class="min-h-screen bg-white shadow w-center dark:bg-gray-700">
     <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive,
 
       page_title: @page_title,
@@ -9,9 +9,10 @@
 
       smart_input_placeholder: e(assigns, :smart_input_placeholder, ""),
       smart_input_text: e(assigns, :smart_input_text, "") )%>
+
     <%= live_component(@socket, Bonfire.UI.ValueFlows.ProcessHeroLive, assigns_clean(assigns)) %>
 
-      <%= live_component(@socket, Bonfire.UI.Reflow.ListNavigationLive, assigns_merge(assigns,
+    <%= live_component(@socket, Bonfire.UI.Reflow.ListNavigationLive, assigns_merge(assigns,
       output_of_id: @process.id,
       action: "work",
       intent_url: "/task/"
@@ -21,7 +22,7 @@
     <div class="block">
       <div class="px-5 border-b dark:border-gray-600">
         <nav class="flex -mb-px space-x-8" aria-label="Tabs">
-          <a href="#" class="px-1 py-4 text-sm font-medium text-indigo-600 border-b-2 border-indigo-500 whitespace-nowrap" aria-current="page">
+          <a href="#" class="px-1 py-4 text-sm font-medium text-pink-600 border-b-2 border-pink-600 dark:text-pink-500 dark:border-pink-500 whitespace-nowrap" aria-current="page">
             Activities
           </a>
         </nav>
