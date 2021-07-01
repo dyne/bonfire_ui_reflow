@@ -12,6 +12,7 @@ defmodule Bonfire.UI.Reflow.Routes do
         live "/process/:id/:tab", ProcessLive
         live "/processes", ProcessesLive
         live "/materials", MaterialsLive
+        live "/inventory", InventoryLive
         live "/reflow/map", MapLive
       end
 
