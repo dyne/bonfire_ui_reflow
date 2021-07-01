@@ -1,0 +1,21 @@
+<main class="lg:flex">
+  <section class="min-h-screen bg-white shadow w-center dark:bg-gray-700">
+    <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive,
+
+      page_title: @page_title,
+      page: @page,
+      smart_input: @smart_input) %>
+
+    <div class="p-3">
+
+      <div class="flex flex-col divide-y dark:divide-gray-600">
+        <%= for resource <- @resources do %>
+          <%= live_component(@socket, Bonfire.UI.ValueFlows.ResourceItemLive,
+            resource: resource,
+            resource_url_prefix: @resource_url_prefix) %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+</main>
