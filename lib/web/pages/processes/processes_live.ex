@@ -23,34 +23,53 @@ defmodule Bonfire.UI.Reflow.ProcessesLive do
 
   defp mounted(_params, _session, socket) do
 
-    processes = processes(socket)
-    IO.inspect(processes)
-
     {:ok, socket
+    |> fetch()
     |> assign(
-      page_title: "All lists",
+      page_title: "All Processes",
       page: "processes",
-      smart_input: false,
-      processes: processes
+      smart_input: false
     )}
   end
 
   @graphql """
-  {
-    processes {
-      id
-      name
-      note
-      has_end
-      intended_outputs {
-        finished
+  query($after: Cursor, $limit: Int) {
+    processes_pages(after: $after, limit: $limit) {
+      page_info
+      edges {
+        id
+        name
+        note
+        has_end
+        intended_outputs {
+          finished
+        }
       }
     }
   }
   """
-  def processes(params \\ %{}, socket), do: liveql(socket, :processes, params)
-  defdelegate handle_params(params, attrs, socket), to: Bonfire.Common.LiveHandlers
+  def processes_pages(params \\ %{}, socket), do: liveql(socket, :processes_pages, params)
+
+  def fetch(params \\ %{}, socket) do
+    %{edges: processes, page_info: page_info} = processes_pages(params, socket)
+    |> IO.inspect
+
+    socket
+    |> assign(
+      processes: (e(socket.assigns, :processes, []) ++ processes) |> Enum.uniq,
+      page_info: page_info
+    )
+  end
+
+  def handle_event("load-more", params, socket) do
+    {:noreply,
+      input_to_atoms(params)
+      |> fetch(socket)
+    }
+  end
+
   def handle_event(action, attrs, socket), do: Bonfire.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)
   def handle_info(info, socket), do: Bonfire.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
+  defdelegate handle_params(params, attrs, socket), to: Bonfire.Common.LiveHandlers
 
 end

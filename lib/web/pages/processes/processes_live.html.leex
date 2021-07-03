@@ -18,6 +18,19 @@
         <%= for process <- @processes do %>
           <%= live_component(@socket, Bonfire.UI.Social.Activity.ProcessReflowLive, object: process, within_feed: false) %>
         <% end %>
+
+        <%= if e(@page_info, :has_next_page, nil) do %>
+        <div class="pagination">
+          <button
+              class="button--outline"
+              phx-click="load-more"
+              phx-value-after="<%= e(@page_info, :end_cursor, nil) %>">
+            load more
+          </button>
+        </div>
+      <% end %>
+
+
       </div>
     </div>
   </section>
