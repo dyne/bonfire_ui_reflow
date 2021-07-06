@@ -2,8 +2,17 @@
   <section class="min-h-screen bg-white rounded-lg dark:bg-gray-700 w-center shadow-tick">
     <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive, assigns_clean(assigns)) %>
     <%= live_component(@socket, Bonfire.UI.ValueFlows.ResourceHeroLive, assigns_clean(assigns)) %>
-    <%= live_component(@socket, Bonfire.UI.ValueFlows.ResourceNavigationLive, assigns_clean(assigns)) %>
+    <!-- <%= live_component(@socket, Bonfire.UI.ValueFlows.ResourceNavigationLive, assigns_clean(assigns)) %> -->
+    <!-- This example requires Tailwind CSS v2.0+ -->
+    <div class="px-4 py-5 border-b border-gray-600">
+      <h3 class="text-lg font-medium leading-6 text-gray-200">
+        Material passport
+      </h3>
+      <p class="max-w-4xl mt-2 text-sm text-gray-400">All the transformations happened to the resource in chronological order.</p>
+    </div>
 
+    <div
+      class="divide-y dark:divide-gray-600">
     <%= for event <- e(assigns, :feed, []) do %>
       <%= live_component(
           @socket,
@@ -11,7 +20,7 @@
           activity: event
         ) %>
     <% end %>
-
+  </div>
   </section>
 
   <aside class="flex-1 hidden mt-2 lg:flex md:flex-shrink-0">
