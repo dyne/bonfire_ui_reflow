@@ -3,7 +3,9 @@
   <div class="flex items-center p-3 border-b dark:border-gray-600">
 
     <div class="flex items-center">
-      <Bonfire.UI.ValueFlows.SelectEconomicEventLive output_of_id={e(assigns, :output_of_id, nil)}  />
+      <Bonfire.UI.ValueFlows.SelectEconomicEventLive 
+        output_of_id={e(assigns, :output_of_id, nil)}
+        units={e(assigns, :units, [])}  />
     </div>
   </div>
 </div>
