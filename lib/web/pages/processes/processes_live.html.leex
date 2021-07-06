@@ -20,9 +20,10 @@
         <% end %>
 
         <%= if e(@page_info, :has_next_page, nil) do %>
-        <div class="pagination">
+        
+        <div class="flex justify-center w-full p-3 mx-auto border-t cursor-pointer dark:border-gray-600 place-items-center">
           <button
-              class="button--outline"
+              class="relative items-center w-full px-4 py-2 text-sm font-medium text-center text-gray-700 rounded-md dark:text-gray-300 dark:hover:bg-gray-500 hover:bg-gray-50"
               phx-click="load-more"
               phx-value-after="<%= e(@page_info, :end_cursor, nil) %>">
             load more
