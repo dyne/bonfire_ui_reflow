@@ -22,20 +22,17 @@ defmodule Bonfire.UI.Reflow.ProcessLive do
   end
 
   defp mounted(%{"id"=> id} = _params, _session, socket) do
-    all_units = all_units(socket)
-    IO.inspect(all_units: all_units)
     {:ok, socket
     |> assign(
       page_title: "process",
       page: "process",
       selected_tab: "events",
       smart_input: false,
-      units: e(all_units, :edges, []),
-      process: process(%{id: id}, socket) |> IO.inspect()
+      units: units_for_select(socket),
+      process: process(%{id: id}, socket) #|> IO.inspect()
       # resource: resource,
     )}
   end
-
 
 
   @process_fields_basic """
@@ -139,7 +136,7 @@ defmodule Bonfire.UI.Reflow.ProcessLive do
     }
   """
   def units_pages(params \\ %{}, socket), do: liveql(socket, :units_pages, params)
-  def all_units(socket), do: units_pages(socket)
+  def units_for_select(socket), do: units_pages(socket) |> e(:edges, []) |> Enum.map(&{&1.label, &1.id}) #|> IO.inspect
 
   defdelegate handle_params(params, attrs, socket), to: Bonfire.Common.LiveHandlers
   def handle_event(action, attrs, socket), do: Bonfire.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)
