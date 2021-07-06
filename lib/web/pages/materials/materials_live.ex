@@ -28,22 +28,33 @@ defmodule Bonfire.UI.Reflow.MaterialsLive do
 
     {:ok, socket
     |> assign(
+      resource_url_prefix: "/resource/",
       page_title: "All materials",
       page: "materials",
       smart_input: false,
-      resources: resources
+      resources: e(resources, :economicResources, [])
     )}
   end
 
   @graphql """
   {
     economicResources {
+      id
       name
       note
-      primaryAccountable {
+      image
+      current_location {
         id
         name
-        image
+        mappable_address
+      }
+      onhand_quantity {
+        id
+        has_numerical_value
+        has_unit {
+          label
+          symbol
+        }
       }
     }
   }
