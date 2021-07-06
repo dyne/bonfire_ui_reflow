@@ -6,9 +6,23 @@
       page: @page,
       smart_input: @smart_input) %>
 
+      <div class="px-4 py-5 bg-white border-b border-gray-200 dark:border-gray-600 dark:bg-gray-700 sm:px-6">
+        <div class="flex flex-wrap items-center justify-between -mt-2 -ml-4 sm:flex-nowrap">
+          <div class="mt-2 ml-4">
+            <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-200">
+              View all your resources
+            </h3>
+          </div>
+          <div class="flex-shrink-0 mt-2 ml-4">
+            <button type="button" class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              Add a new material
+            </button>
+          </div>
+        </div>
+      </div>
     <div class="p-3">
 
-      <div class="flex flex-col divide-y dark:divide-gray-600">
+      <div class="flex flex-col space-y-3">
         <%= for resource <- @resources do %>
           <%= live_component(@socket, Bonfire.UI.ValueFlows.ResourceItemLive,
             resource: resource,

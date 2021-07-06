@@ -16,7 +16,7 @@
 
       <div class="flex flex-col divide-y dark:divide-gray-600">
         <%= for process <- @processes do %>
-          <%= live_component(@socket, Bonfire.UI.Social.Activity.ProcessReflowLive, object: process, within_feed: false) %>
+          <%= live_component(@socket, Bonfire.UI.Social.Activity.ProcessReflowLive, object: process, within_feed: false, current_user: e(assigns, :current_user, [])) %>
         <% end %>
 
         <%= if e(@page_info, :has_next_page, nil) do %>
