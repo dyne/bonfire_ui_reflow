@@ -12,6 +12,7 @@
 
     <%= live_component(@socket, Bonfire.UI.ValueFlows.ProcessHeroLive, assigns_clean(assigns)) %>
 
+    
     <%= live_component(@socket, Bonfire.UI.Reflow.ListNavigationLive, assigns_merge(assigns,
       output_of_id: @process.id,
       units: @units,
