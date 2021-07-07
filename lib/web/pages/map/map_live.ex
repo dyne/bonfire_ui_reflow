@@ -31,7 +31,7 @@ defmodule Bonfire.UI.Reflow.MapLive do
   def fetch_resources_places(filters \\ [], _socket) do
     with {:ok, things} <-
           ValueFlows.EconomicResource.EconomicResources.many([{:preload, :current_location}] ++ filters) do
-      # IO.inspect(things)
+       IO.inspect(things: things)
 
         things
         |> Enum.map(
