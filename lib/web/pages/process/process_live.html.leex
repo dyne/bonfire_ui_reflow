@@ -31,13 +31,14 @@
       </div>
     </div>
 
-
-    <%= for event <- e(@process, :outputs, []) do %>
-      <%= live_component(
-          @socket,
-          Bonfire.UI.Social.ActivityLive,
-          activity: event
-        ) %>
-    <% end %>
+    <div class="divide-y dark:divide-gray-600">
+      <%= for event <- e(@process, :outputs, []) do %>
+        <%= live_component(
+            @socket,
+            Bonfire.UI.Social.ActivityLive,
+            activity: event
+          ) %>
+      <% end %>
+    </div>
   </section>
 </main>
