@@ -1,12 +1,9 @@
 <main class="lg:flex">
   <section class="bg-white rounded shadow w-center dark:bg-gray-700">
     <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive,
-
       page_title: @page_title,
       page: @page,
       smart_input: @smart_input,
-
-
       reply_to_id: nil,
       reply_to_thread_id: nil,
       smart_input_placeholder: e(assigns, :smart_input_placeholder, ""),
@@ -16,14 +13,14 @@
 
       <div class="flex flex-col divide-y dark:divide-gray-600">
         <%= for process <- @processes do %>
-          <%= live_component(@socket, Bonfire.UI.Social.Activity.ProcessReflowLive, 
-            assigns_merge(assigns, 
-            object: process, 
+          <%= live_component(@socket, Bonfire.UI.Social.Activity.ProcessReflowLive,
+            assigns_merge(assigns,
+            object: process,
             within_feed: false)) %>
         <% end %>
 
         <%= if e(@page_info, :has_next_page, nil) do %>
-        
+
         <div class="flex justify-center w-full p-3 mx-auto border-t cursor-pointer dark:border-gray-600 place-items-center">
           <button
               class="relative items-center w-full px-4 py-2 text-sm font-medium text-center text-gray-700 rounded-md dark:text-gray-300 dark:hover:bg-gray-500 hover:bg-gray-50"
