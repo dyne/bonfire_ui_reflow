@@ -9,7 +9,7 @@ defmodule Bonfire.UI.Reflow.UsersTest do
     attrs = Fake.user()
     assert {:ok, user} = Users.create(attrs, account)
     assert attrs.name == user.profile.name
-    assert attrs.summary == user.profile.summary
+    assert attrs.summary =~ user.profile.summary
     assert attrs.username == user.character.username
   end
 
@@ -29,7 +29,7 @@ defmodule Bonfire.UI.Reflow.UsersTest do
     assert {:ok, user} = Users.create(attrs, account)
     assert {:ok, user} = Users.by_username(attrs.username)
     assert user.profile.name == attrs.name
-    assert user.profile.summary == attrs.summary
+    assert user.profile.summary =~ attrs.summary
     assert user.character.username == attrs.username
   end
 end
