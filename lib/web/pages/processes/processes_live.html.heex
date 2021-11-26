@@ -26,7 +26,7 @@
           <button
               class="relative items-center w-full px-4 py-2 text-sm font-medium text-center text-gray-700 rounded-md dark:text-gray-300 dark:hover:bg-gray-500 hover:bg-gray-50"
               phx-click="load-more"
-              phx-value-after="<%= e(@page_info, :end_cursor, nil) %>">
+              phx-value-after={ e(@page_info, :end_cursor, nil)}>
             load more
           </button>
         </div>

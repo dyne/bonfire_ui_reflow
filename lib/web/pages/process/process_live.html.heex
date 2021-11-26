@@ -13,7 +13,7 @@
 
     
     <%= live_component(@socket, Bonfire.UI.Reflow.ListNavigationLive, assigns_merge(assigns,
-      output_of_id: @process.id,
+      output_of_id: e(@process, :id, nil),
       units: @units,
       action: "work",
       intent_url: "/task/"
