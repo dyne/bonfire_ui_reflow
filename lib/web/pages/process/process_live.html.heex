@@ -1,14 +1,13 @@
 <main class="lg:flex">
   <section class="min-h-screen bg-white shadow w-center dark:bg-gray-700">
-    <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive,
 
-      page_title: @page_title,
-      page: @page,
-      smart_input: @smart_input,
-
-
-      smart_input_placeholder: e(assigns, :smart_input_placeholder, ""),
-      smart_input_text: e(assigns, :smart_input_text, "") )%>
+    <Bonfire.UI.Social.PageHeaderLive
+      page_title={@page_title}
+      page={@page}
+      smart_input={@smart_input}
+      smart_input_placeholder={e(assigns, :smart_input_placeholder, "")}
+      smart_input_text={e(assigns, :smart_input_text, "")} 
+    />
 
     <%= live_component(@socket, Bonfire.UI.ValueFlows.ProcessHeroLive, assigns_clean(assigns)) %>
 
