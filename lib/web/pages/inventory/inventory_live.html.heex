@@ -1,33 +1,32 @@
 <main class="lg:flex">
   <section class="min-h-screen bg-white shadow w-center dark:bg-gray-700">
-      <Bonfire.UI.Social.PageHeaderLive
+      <Bonfire.UI.Social.PageHeaderLive.render
       page_title={@page_title}
       page={@page}
       smart_input={@smart_input}
-       
     />
 
 
-      <div class="px-4 py-5 bg-white border-b border-gray-200 dark:border-gray-600 dark:bg-gray-700 sm:px-6">
-        <div class="flex flex-wrap items-center justify-between -mt-2 -ml-4 sm:flex-nowrap">
-          <div class="mt-2 ml-4">
-            <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-200">
-              View all your resources
-            </h3>
-          </div>
-          <div class="flex-shrink-0 mt-2 ml-4">
+    <div class="px-4 py-5 bg-white border-b border-gray-200 dark:border-gray-600 dark:bg-gray-700 sm:px-6">
+      <div class="flex flex-wrap items-center justify-between -mt-2 -ml-4 sm:flex-nowrap">
+        <div class="mt-2 ml-4">
+          <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-200">
+            View all your resources
+          </h3>
+        </div>
+        <div class="flex-shrink-0 mt-2 ml-4">
 
-            <div
-              x-cloak
-              x-data="{
-                open_select_economic_event: false
-              }"
-              @keydown.escape.stop="open_select_economic_event = false"
-              >
-
+          <div
+            x-cloak
+            x-data="{
+              open_select_economic_event: false
+            }"
+            @keydown.escape.stop="open_select_economic_event = false"
+            >
           </div>
         </div>
       </div>
+    </div>
     <div class="p-3">
 
       <div class="flex flex-col space-y-3">
