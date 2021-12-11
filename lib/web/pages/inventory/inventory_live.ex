@@ -5,9 +5,9 @@ defmodule Bonfire.UI.Reflow.InventoryLive do
 
   alias Bonfire.Web.LivePlugs
   alias Bonfire.Me.Users
- 
+
   def mount(params, session, socket) do
-    
+
     LivePlugs.live_plug params, session, socket, [
       LivePlugs.LoadCurrentAccount,
       LivePlugs.LoadCurrentUser,
@@ -16,10 +16,9 @@ defmodule Bonfire.UI.Reflow.InventoryLive do
       &mounted/3,
     ]
   end
-  
+
   defp mounted(_params, _session, socket) do
-    # IO.inspect(socket.assigns.__context__.current_user.id)
-    resources = agent_resources(%{id: socket.assigns.__context__.current_user.id}, socket)
+    resources = agent_resources(%{id: e(current_user(socket), :id, nil)}, socket)
     IO.inspect(resources)
 
     {:ok, socket

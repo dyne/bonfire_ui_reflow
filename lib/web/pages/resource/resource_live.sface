@@ -9,8 +9,13 @@
       smart_input_placeholder={e(assigns, :smart_input_placeholder, "")}
       smart_input_text={e(assigns, :smart_input_text, "")} 
     />
-    <%= live_component(@socket, Bonfire.UI.ValueFlows.ResourceHeroLive, assigns_clean(assigns)) %>
-     <%# <%= live_component(@socket, Bonfire.UI.ValueFlows.ResourceNavigationLive, assigns_clean(assigns)) %>  %>
+
+
+    <Bonfire.UI.ValueFlows.ResourceHeroLive
+      resource={e(assigns, :resource, nil)}
+      />
+
+     <!-- <%= live_component(@socket, Bonfire.UI.ValueFlows.ResourceNavigationLive, assigns_clean(assigns)) %> -->
 
     <!-- This requires Tailwind CSS v2.0+ -->
     <div class="px-4 py-5 border-b border-gray-600">
@@ -22,13 +27,12 @@
 
     <div
       class="divide-y dark:divide-gray-600">
-    <%= for event <- e(assigns, :feed, []) do %>
-      <%= live_component(
-          @socket,
-          Bonfire.UI.Social.ActivityLive,
-          activity: event
-        ) %>
-    <% end %>
+      {#for event <- e(assigns, :feed, []) }
+        <Bonfire.UI.Social.ActivityLive
+            activity={event}
+            show_likes={false}
+          />
+      {/for}
   </div>
   </section>
 

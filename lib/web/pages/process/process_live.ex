@@ -1,5 +1,5 @@
 defmodule Bonfire.UI.Reflow.ProcessLive do
-  use Bonfire.Web, :live_view
+  use Bonfire.Web, :surface_view
   # use Surface.LiveView
   use AbsintheClient, schema: Bonfire.GraphQL.Schema, action: [mode: :internal]
 
