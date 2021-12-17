@@ -3,7 +3,7 @@
   <div class={"mt-4 bg-white dark:bg-gray-700 shadow rounded-lg": current_user(assigns) == nil}>
     <Bonfire.UI.Social.ProfileNavigationLive selected_tab={@selected_tab} user={@user} />
     <div class="flex flex-col p-4 space-y-3">
-      <div :for={resource <- list_resources(@user.id, nil)}>
+      <div :for={resource <- list_resources(@user.id)}>
         <Bonfire.UI.ValueFlows.ResourceItemLive
           resource={resource}
           resource_url_prefix="/resource/"

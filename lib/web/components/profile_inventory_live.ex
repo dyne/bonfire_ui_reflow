@@ -6,9 +6,9 @@ defmodule Bonfire.UI.Reflow.ProfileInventoryLive do
   prop resources, :map
   prop selected_tab, :string
 
-  def list_resources(user_id, socket) do
+  def list_resources(user_id) do
 
-    resources = agent_resources(%{id: user_id}, socket)
+    resources = agent_resources(%{id: user_id})
     IO.inspect(agent_resources: resources)
 
     e(resources, :agent, :inventoried_economic_resources, [])
@@ -38,7 +38,7 @@ defmodule Bonfire.UI.Reflow.ProfileInventoryLive do
     }
   }}
   """
-  def agent_resources(params \\ %{}, socket), do: liveql(socket, :agent_resources, params)
+  def agent_resources(params \\ %{}, socket \\ nil), do: liveql(socket, :agent_resources, params)
 
 
 end
