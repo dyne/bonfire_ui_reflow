@@ -36,6 +36,7 @@ defmodule Bonfire.UI.Reflow.ProcessLive do
 
 
   @process_fields_basic """
+  __typename
   id
   name
   note
@@ -45,6 +46,7 @@ defmodule Bonfire.UI.Reflow.ProcessLive do
 
   @agent_fields """
   {
+    __typename
     id
     name
     image
@@ -54,6 +56,7 @@ defmodule Bonfire.UI.Reflow.ProcessLive do
 
   @quantity_fields """
   {
+    __typename
     has_numerical_value
     has_unit {
       label
@@ -64,6 +67,7 @@ defmodule Bonfire.UI.Reflow.ProcessLive do
 
   @resource_fields """
   {
+    __typename
     id
     name
     note
@@ -74,21 +78,15 @@ defmodule Bonfire.UI.Reflow.ProcessLive do
   """
 
   @event_fields_basic """
-    id
     __typename
+    id
     note
     provider #{@agent_fields}
     receiver #{@agent_fields}
     action {
       label
     }
-    resource_quantity {
-      has_numerical_value
-      has_unit {
-        label
-        symbol
-      }
-    }
+    resource_quantity #{@quantity_fields}
 
     resource_inventoried_as #{@resource_fields}
     to_resource_inventoried_as #{@resource_fields}
@@ -98,13 +96,7 @@ defmodule Bonfire.UI.Reflow.ProcessLive do
   {
     #{@event_fields_basic}
 
-    effort_quantity {
-      has_numerical_value
-      has_unit {
-        label
-        symbol
-      }
-    }
+    effort_quantity #{@quantity_fields}
 
     output_of
     input_of

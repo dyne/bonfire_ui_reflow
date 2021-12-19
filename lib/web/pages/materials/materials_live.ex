@@ -39,19 +39,23 @@ defmodule Bonfire.UI.Reflow.MaterialsLive do
   @graphql """
   {
     economicResources {
+      __typename
       id
       name
       note
       image
       current_location {
+        __typename
         id
         name
         mappable_address
       }
       onhand_quantity {
+        __typename
         id
         has_numerical_value
         has_unit {
+          __typename
           label
           symbol
         }

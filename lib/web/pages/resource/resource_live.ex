@@ -49,12 +49,14 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
   end
 
   @resource_fields_basic """
+    __typename
     id
     name
     note
     image
     primary_accountable
     onhand_quantity {
+      __typename
       id
       has_numerical_value
       has_unit {
@@ -78,11 +80,13 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
     economic_resource(id: $id) {
       #{@resource_fields_basic}
       current_location {
+        __typename
         id
         name
         mappable_address
       }
       conforms_to {
+        __typename
         id
         name
         note

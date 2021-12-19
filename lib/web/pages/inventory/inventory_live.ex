@@ -36,16 +36,19 @@ defmodule Bonfire.UI.Reflow.InventoryLive do
   query($id: ID) {
   agent(id: $id) {
     inventoried_economic_resources {
+      __typename
       id
       name
       note
       image
       current_location {
+        __typename
         id
         name
         mappable_address
       }
       onhand_quantity {
+        __typename
         id
         has_numerical_value
         has_unit {

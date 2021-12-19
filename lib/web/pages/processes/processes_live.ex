@@ -37,6 +37,7 @@ defmodule Bonfire.UI.Reflow.ProcessesLive do
     processes_pages(after: $after, limit: $limit) {
       page_info
       edges {
+        __typename
         id
         name
         note
