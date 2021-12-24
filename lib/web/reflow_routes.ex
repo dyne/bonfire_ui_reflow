@@ -8,6 +8,7 @@ defmodule Bonfire.UI.Reflow.Routes do
         pipe_through :browser
         live "/resource/:id", ResourceLive, as: ValueFlows.EconomicResource
         live "/resource/:id/:tab", ResourceLive
+        live "/process/", ProcessLive, as: ValueFlows.Process
         live "/process/:id", ProcessLive, as: ValueFlows.Process
         live "/process/:id/:tab", ProcessLive
         live "/processes", ProcessesLive
