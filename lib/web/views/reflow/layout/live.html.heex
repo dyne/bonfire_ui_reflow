@@ -4,12 +4,12 @@
   <%= if info || error do %>
     <div id="flash-messages" class="absolute z-50 right-8 top-8">
       <%= if info do %>
-        <p class="alert alert-info bg-base " role="alert"
+        <p class="alert alert-info " role="alert"
           phx-click="lv:clear-flash"
           phx-value-key="info"><%= info %></p>
       <% end %>
       <%= if error do %>
-        <p class="alert alert-error bg-base " role="alert"
+        <p class="alert alert-error " role="alert"
           phx-click="lv:clear-flash"
           phx-value-key="error"><%= error %></p>
       <% end %>

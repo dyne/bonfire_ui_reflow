@@ -4,10 +4,10 @@
   <%= if info || error do %>
     <div id="flash-messages" class="bg-base">
       <%= if info do %>
-        <p class="alert alert-info bg-base " role="alert"><%= info %></p>
+        <p class="alert alert-info " role="alert"><%= info %></p>
       <% end %>
       <%= if error do %>
-        <p class="alert alert-error bg-base " role="alert"><%= error %></p>
+        <p class="alert alert-error " role="alert"><%= error %></p>
       <% end %>
     </div>
   <% end %>
