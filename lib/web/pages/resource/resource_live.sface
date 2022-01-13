@@ -66,7 +66,7 @@ x-data="{
         x-transition:leave-start="opacity-100" 
         x-transition:leave-end="opacity-0" 
         x-description="Background overlay, show/hide based on modal state." 
-        class="fixed inset-0 transition-opacity bg-neutral bg-opacity-75" 
+        class="fixed inset-0 transition-opacity bg-neutral bg-opacity-40" 
         aria-hidden="true">
       </div>
       <!-- This element is to trick the browser into centering the modal contents. -->
@@ -78,7 +78,7 @@ x-data="{
         x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
         x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
         x-description="Modal panel, show/hide based on modal state." 
-        class="mx-auto mt-12 overflow-hidden text-left align-bottom transition-all transform bg-neutral rounded-lg shadow-xl w-center">
+        class="mx-auto mt-12 overflow-hidden text-left align-bottom transition-all transform bg-neutral bg-opacity-40 rounded-lg shadow-xl w-center">
         
           <section class="bg-base-100 rounded-lg shadow  w-center">
             <div class="mx-4 bg-base-100 border-gray-100 rounded-lg   lg:mx-0">

@@ -27,7 +27,7 @@
         x-bind:aria-expanded="open"
         aria-expanded="true"
         type="button"
-        class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-primary-content-700 bg-neutral hover:bg-neutral focus:outline-none focus:ring-1 focus:ring-secondary-500 focus:border-indigo-500">
+        class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-primary-content-700 bg-neutral hover:bg-neutral hover:bg-opacity-30  focus:outline-none focus:ring-1 focus:ring-secondary-500 focus:border-indigo-500">
         <svg class="h-5 w-5 text-primary-content-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
         <path d="M3 3a1 1 0 000 2h11a1 1 0 100-2H3zM3 7a1 1 0 000 2h5a1 1 0 000-2H3zM3 11a1 1 0 100 2h4a1 1 0 100-2H3zM13 16a1 1 0 102 0v-5.586l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 101.414 1.414L13 10.414V16z" />
         </svg>
@@ -49,16 +49,16 @@
         role="menu"
         aria-orientation="vertical">
             <div class="py-1" role="none">
-            <div class="block w-full px-4 py-2 text-sm text-left text-primary-content-700 transition duration-150 ease-in-out hover:bg-neutral">
+            <div class="block w-full px-4 py-2 text-sm text-left text-primary-content-700 transition duration-150 ease-in-out hover:bg-neutral hover:bg-opacity-30 ">
                 Newest
             </div>
-            <div class="block w-full px-4 py-2 text-sm text-left text-primary-content-700 transition duration-150 ease-in-out hover:bg-neutral">
+            <div class="block w-full px-4 py-2 text-sm text-left text-primary-content-700 transition duration-150 ease-in-out hover:bg-neutral hover:bg-opacity-30 ">
                 Oldest
             </div>
-            <div class="block w-full px-4 py-2 text-sm text-left text-primary-content-700 transition duration-150 ease-in-out hover:bg-neutral">
+            <div class="block w-full px-4 py-2 text-sm text-left text-primary-content-700 transition duration-150 ease-in-out hover:bg-neutral hover:bg-opacity-30 ">
                 Most voted
             </div>
-            <div class="block w-full px-4 py-2 text-sm text-left text-primary-content-700 transition duration-150 ease-in-out hover:bg-neutral">
+            <div class="block w-full px-4 py-2 text-sm text-left text-primary-content-700 transition duration-150 ease-in-out hover:bg-neutral hover:bg-opacity-30 ">
                 Most discussed
             </div>
             </div>
