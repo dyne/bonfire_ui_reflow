@@ -19,7 +19,8 @@ defmodule Bonfire.UI.Reflow.InventoryLive do
 
   defp mounted(_params, _session, socket) do
     resources = agent_resources(%{id: e(current_user(socket), :id, nil)}, socket)
-    IO.inspect(resources)
+    # IO.inspect(Jason.encode!(resources))
+    # IO.inspect(resources)
 
     {:ok, socket
     |> assign(

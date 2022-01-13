@@ -1,5 +1,5 @@
 <main class="lg:flex">
-  <section class="bg-base-100 rounded shadow w-center dark:bg-neutral-700">
+  <section class="bg-base-100 rounded shadow w-center ">
 
     <Bonfire.UI.Social.PageHeaderLive.render
       page_title={@page_title}
@@ -22,9 +22,9 @@
 
         <%= if e(@page_info, :has_next_page, nil) do %>
 
-        <div class="flex justify-center w-full p-3 mx-auto border-t cursor-pointer dark:border-gray-600 place-items-center">
+        <div class="flex justify-center w-full p-3 mx-auto border-t cursor-pointer  place-items-center">
           <button
-              class="relative items-center w-full px-4 py-2 text-sm font-medium text-center text-primary-content-700 rounded-md dark:text-primary-content-300 dark:hover:bg-neutral-500 hover:bg-neutral-50"
+              class="relative items-center w-full px-4 py-2 text-sm font-medium text-center text-primary-content-700 rounded-md   hover:bg-neutral"
               phx-click="load-more"
               phx-value-after={ e(@page_info, :end_cursor, nil)}>
             load more

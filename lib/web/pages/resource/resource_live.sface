@@ -1,5 +1,8 @@
-<main class="lg:flex">
-  <section class="bg-base-100 shadow w-center dark:bg-neutral-700">
+<main class="lg:flex"
+x-data="{
+  open_passport_data: false
+  }">
+  <section class="bg-base-100 shadow w-center ">
   <Bonfire.UI.Social.PageHeaderLive.render
       page_title={@page_title}
       page={@page}
@@ -19,10 +22,17 @@
 
     <!-- This requires Tailwind CSS v2.0+ -->
     <div class="px-4 py-5 border-b border-gray-600">
+      
       <h3 class="text-lg font-medium leading-6 text-primary-content-200">
         Material passport
       </h3>
-      <p class="max-w-4xl mt-2 text-sm text-primary-content-400">All the transformations happened to the resource in chronological order.</p>
+      <p class="max-w-4xl mt-2 text-sm text-primary-content-400">
+      <button 
+        class="btn btn-secondary float-right"
+        @click="open_passport_data = true">
+        Export data
+      </button>
+      All the transformations happened to the resource in chronological order.</p>
     </div>
 
     <div
@@ -34,7 +44,56 @@
           />
       {/for}
   </div>
+
+
   </section>
 
   
+
+
+  <div 
+    x-show="open_passport_data"
+    class="fixed inset-0 z-50 h-600 overflow-y-auto" 
+    aria-labelledby="modal-title" 
+    x-ref="dialog" 
+    aria-modal="true">
+    <div class="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+      <div 
+        x-transition:enter="ease-out duration-300" 
+        x-transition:enter-start="opacity-0" 
+        x-transition:enter-end="opacity-100" 
+        x-transition:leave="ease-in duration-200" 
+        x-transition:leave-start="opacity-100" 
+        x-transition:leave-end="opacity-0" 
+        x-description="Background overlay, show/hide based on modal state." 
+        class="fixed inset-0 transition-opacity bg-neutral bg-opacity-75" 
+        aria-hidden="true">
+      </div>
+      <!-- This element is to trick the browser into centering the modal contents. -->
+      <div 
+        x-transition:enter="ease-out duration-300" 
+        x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+        x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" 
+        x-transition:leave="ease-in duration-200" 
+        x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
+        x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+        x-description="Modal panel, show/hide based on modal state." 
+        class="mx-auto mt-12 overflow-hidden text-left align-bottom transition-all transform bg-neutral rounded-lg shadow-xl w-center">
+        
+          <section class="bg-base-100 rounded-lg shadow  w-center">
+            <div class="mx-4 bg-base-100 border-gray-100 rounded-lg   lg:mx-0">
+              <div class="flex items-center px-2 pt-3">
+                <div class="flex-1 text-base font-semibold text-primary-content-300">{l "Material passport data"}</div>
+                <div @click="open_passport_data = false" ><Outline.XIcon class="w-5 h-5 text-primary-content-400 cursor-pointer hover:text-primary-content-200" /></div>
+              </div>
+              
+                <textarea class="textarea w-full h-500" readonly="true" onclick="this.select()".>{@json}</textarea>
+
+            </div>
+          </section>
+        
+      </div>
+    </div>
+  </div>
+
 </main>

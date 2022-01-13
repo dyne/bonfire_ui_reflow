@@ -1,5 +1,5 @@
   <div class="flex flex-col space-y-1">
-    <LivePatch to="/browse" class={"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-neutral-700 dark:text-primary-content-200 focus:outline-none focus:text-primary-content-900 focus:bg-neutral-50 text-primary-content-600", "bg-blueGray-200 text-primary-content-800 dark:bg-neutral-700 dark:text-primary-content-200": @page == "browse"}>
+    <LivePatch to="/browse" class={"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200   focus:outline-none focus:text-primary-content-900 focus:bg-neutral text-primary-content-600", "bg-blueGray-200 text-primary-content-800  ": @page == "browse"}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 group-hover:bg-blueGray-300">
         <svg
           aria-labelledby="navigation_browse"
@@ -13,7 +13,7 @@
       <span class="text-sm font-semibold capitalize" id="navigation_browse">browse</span>
     </LivePatch>
 
-    <LivePatch :if={current_user(assigns)} to={path(current_user(assigns))} class={"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-neutral-700 dark:text-primary-content-200 focus:outline-none focus:text-primary-content-900 focus:bg-neutral-50 text-primary-content-600", "bg-blueGray-200 text-primary-content-800 dark:bg-neutral-700 dark:text-primary-content-200": @page == "profile"}>
+    <LivePatch :if={current_user(assigns)} to={path(current_user(assigns))} class={"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200   focus:outline-none focus:text-primary-content-900 focus:bg-neutral text-primary-content-600", "bg-blueGray-200 text-primary-content-800  ": @page == "profile"}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 group-hover:bg-blueGray-300">
       <svg
         aria-labelledby="navigation_profile"
@@ -26,7 +26,7 @@
       <span class="text-sm font-semibold capitalize" id="navigation_profile">profile</span>
     </LivePatch>
 
-    <LivePatch to={"/inventory"} class={"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-neutral-700 dark:text-primary-content-200 focus:outline-none focus:text-primary-content-900 focus:bg-neutral-50 text-primary-content-600", "bg-blueGray-200 text-primary-content-800 dark:bg-neutral-700 dark:text-primary-content-200": @page == "inventory"}>
+    <LivePatch to={"/inventory"} class={"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200   focus:outline-none focus:text-primary-content-900 focus:bg-neutral text-primary-content-600", "bg-blueGray-200 text-primary-content-800  ": @page == "inventory"}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 group-hover:bg-blueGray-300">
         <svg
           aria-labelledby="navigation_lists"
@@ -41,7 +41,7 @@
       <span class="text-sm font-semibold capitalize" id="navigation_profile">My inventory</span>
     </LivePatch>
 
-    <LivePatch to={"/materials"} class={"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-neutral-700 dark:text-primary-content-200 focus:outline-none focus:text-primary-content-900 focus:bg-neutral-50 text-primary-content-600", "bg-blueGray-200 text-primary-content-800 dark:bg-neutral-700 dark:text-primary-content-200": @page == "materials"}>
+    <LivePatch to={"/materials"} class={"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200   focus:outline-none focus:text-primary-content-900 focus:bg-neutral text-primary-content-600", "bg-blueGray-200 text-primary-content-800  ": @page == "materials"}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 group-hover:bg-blueGray-300">
         <svg
           aria-labelledby="navigation_lists"
@@ -56,7 +56,7 @@
       <span class="text-sm font-semibold capitalize" id="navigation_profile">all materials</span>
     </LivePatch>
 
-    <LivePatch to={"/processes"} class={"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-neutral-700 dark:text-primary-content-200 focus:outline-none focus:text-primary-content-900 focus:bg-neutral-50 text-primary-content-600", "bg-blueGray-200 text-primary-content-800 dark:bg-neutral-700 dark:text-primary-content-200": @page == "processes"}>
+    <LivePatch to={"/processes"} class={"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200   focus:outline-none focus:text-primary-content-900 focus:bg-neutral text-primary-content-600", "bg-blueGray-200 text-primary-content-800  ": @page == "processes"}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 group-hover:bg-blueGray-300">
         <svg
           aria-labelledby="navigation_lists"
@@ -71,7 +71,7 @@
       <span class="text-sm font-semibold capitalize" id="navigation_profile">all processes</span>
     </LivePatch>
 
-    <LivePatch :if={current_user(assigns)} to={"/reflow/map"} class={"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-neutral-700 dark:text-primary-content-200 focus:outline-none focus:text-primary-content-900 focus:bg-neutral-50 text-primary-content-600", "bg-blueGray-200 text-primary-content-800 dark:bg-neutral-700 dark:text-primary-content-200": @page == "map"}>
+    <LivePatch :if={current_user(assigns)} to={"/reflow/map"} class={"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200   focus:outline-none focus:text-primary-content-900 focus:bg-neutral text-primary-content-600", "bg-blueGray-200 text-primary-content-800  ": @page == "map"}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 hover:bg-blueGray-300">
       <svg
         aria-labelledby="navigation_profile"

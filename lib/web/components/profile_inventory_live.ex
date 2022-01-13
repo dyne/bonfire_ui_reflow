@@ -10,6 +10,7 @@ defmodule Bonfire.UI.Reflow.ProfileInventoryLive do
 
     resources = agent_resources(%{id: user_id})
     # IO.inspect(agent_resources: resources)
+    # Jason.encode!(resources) |> IO.inspect
 
     e(resources, :agent, :inventoried_economic_resources, [])
   end

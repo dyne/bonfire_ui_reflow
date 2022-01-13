@@ -1,6 +1,6 @@
 
 <div>
-  <div class="flex items-center p-3 border-b dark:border-gray-600">
+  <div class="flex items-center p-3 border-b ">
 
     <div class="flex items-center">
       <Bonfire.UI.ValueFlows.SelectEconomicEventLive 

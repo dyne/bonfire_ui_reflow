@@ -29,6 +29,7 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
     # IO.inspect(post_plugs: socket)
 
     resource = economic_resource(%{id: id}, socket)
+
     # IO.inspect(resource: resource)
 
     {:ok, socket
@@ -39,6 +40,7 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
       smart_input: false,
       # resource: "1234",
       resource: resource,
+      json:     resource |> nested_structs_to_maps() |> Jason.encode!() |> IO.inspect,
       main_labels: [
         %{id: 1, name: "Frontend dev", items: 5, color: "blue"},
         %{id: 2, name: "Backend dev", items: 0, color: "yellow"},
@@ -54,7 +56,14 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
     name
     note
     image
-    primary_accountable
+    primary_accountable {
+      __typename
+      id
+      name
+      image
+      display_username
+      canonical_url
+    }
     onhand_quantity {
       __typename
       id
@@ -142,7 +151,7 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
       {:noreply, socket
       |> assign(
         selected_tab: "track",
-        feed: e(resource, :track, []) |> IO.inspect(label: "track")
+        feed: e(resource, :track, []) #|> IO.inspect(label: "track")
       )}
     end
   end
