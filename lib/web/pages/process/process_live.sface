@@ -1,5 +1,5 @@
 <main class="lg:flex">
-  <section class="min-h-screen bg-white shadow w-center dark:bg-gray-700">
+  <section class="min-h-screen bg-base-100 shadow w-center dark:bg-neutral-700">
 
     <Bonfire.UI.Social.PageHeaderLive
       page_title={@page_title}

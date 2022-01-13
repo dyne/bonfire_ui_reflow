@@ -9,7 +9,7 @@ defmodule Bonfire.UI.Reflow.ProfileInventoryLive do
   def list_resources(user_id) do
 
     resources = agent_resources(%{id: user_id})
-    IO.inspect(agent_resources: resources)
+    # IO.inspect(agent_resources: resources)
 
     e(resources, :agent, :inventoried_economic_resources, [])
   end

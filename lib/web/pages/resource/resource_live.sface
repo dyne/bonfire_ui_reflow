@@ -1,5 +1,5 @@
 <main class="lg:flex">
-  <section class="bg-white shadow w-center dark:bg-gray-700">
+  <section class="bg-base-100 shadow w-center dark:bg-neutral-700">
   <Bonfire.UI.Social.PageHeaderLive.render
       page_title={@page_title}
       page={@page}
@@ -19,10 +19,10 @@
 
     <!-- This requires Tailwind CSS v2.0+ -->
     <div class="px-4 py-5 border-b border-gray-600">
-      <h3 class="text-lg font-medium leading-6 text-gray-200">
+      <h3 class="text-lg font-medium leading-6 text-primary-content-200">
         Material passport
       </h3>
-      <p class="max-w-4xl mt-2 text-sm text-gray-400">All the transformations happened to the resource in chronological order.</p>
+      <p class="max-w-4xl mt-2 text-sm text-primary-content-400">All the transformations happened to the resource in chronological order.</p>
     </div>
 
     <div
