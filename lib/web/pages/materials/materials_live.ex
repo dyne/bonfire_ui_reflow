@@ -11,7 +11,6 @@ defmodule Bonfire.UI.Reflow.MaterialsLive do
   # alias Bonfire.UI.Coordination.ResourceWidget
 
   def mount(params, session, socket) do
-
     LivePlugs.live_plug params, session, socket, [
       LivePlugs.LoadCurrentAccount,
       LivePlugs.LoadCurrentUser,

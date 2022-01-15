@@ -13,12 +13,19 @@
     process={@process}
       />
     
-    <Bonfire.UI.Reflow.ListNavigationLive
-      output_of_id={e(@process, :id, nil)}
-      units={@units}
-      action="work"
-      intent_url="/task/"
-    />
+    <div>
+      <div class="flex items-center p-3 border-b ">
+
+        <div class="flex items-center">
+          <Bonfire.UI.ValueFlows.SelectEconomicEventLive 
+          process={@process}
+          units={@units}
+          action="work"
+          intent_url="/task/"
+          />
+        </div>
+      </div>
+    </div>
 
 
     <div class="block">

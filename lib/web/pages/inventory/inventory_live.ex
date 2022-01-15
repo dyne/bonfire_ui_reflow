@@ -7,7 +7,6 @@ defmodule Bonfire.UI.Reflow.InventoryLive do
   alias Bonfire.Me.Users
 
   def mount(params, session, socket) do
-
     LivePlugs.live_plug params, session, socket, [
       LivePlugs.LoadCurrentAccount,
       LivePlugs.LoadCurrentUser,

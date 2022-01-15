@@ -41,12 +41,7 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
       # resource: "1234",
       resource: resource,
       json:     resource |> nested_structs_to_maps() |> Jason.encode!() |> IO.inspect,
-      main_labels: [
-        %{id: 1, name: "Frontend dev", items: 5, color: "blue"},
-        %{id: 2, name: "Backend dev", items: 0, color: "yellow"},
-        %{id: 3, name: "AP dev", items: 1, color: "pink"},
-        %{id: 4, name: "Content", items: 3, color: "red"}
-      ]
+      units: Bonfire.UI.Reflow.ProcessLive.units_for_select(socket)
     )}
   end
 
