@@ -9,7 +9,7 @@ x-data="{
       smart_input={@smart_input}
       reply_to_id={nil}
       thread_id={nil}
-      smart_input_placeholder={e(assigns, :smart_input_placeholder, "")}
+      smart_input_prompt={e(assigns, :smart_input_prompt, "")}
       smart_input_text={e(assigns, :smart_input_text, "")} 
     />
 

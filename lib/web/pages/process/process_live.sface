@@ -5,7 +5,7 @@
       page_title={@page_title}
       page={@page}
       smart_input={@smart_input}
-      smart_input_placeholder={e(assigns, :smart_input_placeholder, "")}
+      smart_input_prompt={e(assigns, :smart_input_prompt, "")}
       smart_input_text={e(assigns, :smart_input_text, "")} 
     />
 
