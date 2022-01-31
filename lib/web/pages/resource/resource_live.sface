@@ -8,7 +8,7 @@ x-data="{
       page={@page}
       smart_input={@smart_input}
       reply_to_id={nil}
-      reply_to_thread_id={nil}
+      thread_id={nil}
       smart_input_placeholder={e(assigns, :smart_input_placeholder, "")}
       smart_input_text={e(assigns, :smart_input_text, "")} 
     />
