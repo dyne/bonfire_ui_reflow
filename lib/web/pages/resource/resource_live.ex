@@ -14,7 +14,7 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
 
   def mount(params, session, socket) do
 
-    # IO.inspect(pre_plugs: socket)
+    # debug(pre_plugs: socket)
 
     LivePlugs.live_plug params, session, socket, [
       LivePlugs.LoadCurrentAccount,
@@ -26,11 +26,11 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
   end
 
   defp mounted(%{"id"=> id} = _params, _session, socket) do
-    # IO.inspect(post_plugs: socket)
+    # debug(post_plugs: socket)
 
     resource = economic_resource(%{id: id}, socket)
 
-    # IO.inspect(resource: resource)
+    # debug(resource: resource)
 
     {:ok, socket
     |> assign(
@@ -141,12 +141,12 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
 
     if resource do
       # resource = track(%{id: id}, socket)
-      # IO.inspect(track: resource)
+      # debug(track: resource)
 
       {:noreply, socket
       |> assign(
         selected_tab: "track",
-        feed: e(resource, :track, []) #|> IO.inspect(label: "track")
+        feed: e(resource, :track, []) #|> debug(label: "track")
       )}
     end
   end
@@ -156,12 +156,12 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
 
     if resource do
       # resource = trace(%{id: id}, socket)
-      # IO.inspect(trace: resource)
+      # debug(trace: resource)
 
       {:noreply, socket
       |> assign(
         selected_tab: "trace",
-        feed: e(resource, :trace, []) #|> IO.inspect(label: "trace")
+        feed: e(resource, :trace, []) #|> debug(label: "trace")
       )}
     end
   end

@@ -23,7 +23,7 @@ defmodule Bonfire.UI.Reflow.MaterialsLive do
   defp mounted(_params, _session, socket) do
 
     resources = resources(socket)
-    IO.inspect(resources)
+    debug(resources)
 
     {:ok, socket
     |> assign(

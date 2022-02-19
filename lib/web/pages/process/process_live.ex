@@ -29,7 +29,7 @@ defmodule Bonfire.UI.Reflow.ProcessLive do
       selected_tab: "events",
       smart_input: false,
       units: units_for_select(socket),
-      process: process(%{id: id}, socket) #|> IO.inspect()
+      process: process(%{id: id}, socket) #|> debug()
       # resource: resource,
     )}
   end

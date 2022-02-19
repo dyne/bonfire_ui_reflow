@@ -15,7 +15,7 @@ defmodule Bonfire.UI.Reflow.MapLive do
 
   defp mounted(params, session, socket) do
     # intents = Bonfire.UI.ValueFlows.ProposalLive.all_intents(socket)
-    #IO.inspect(intents)
+    #debug(intents)
 
     {:ok, socket
     |> assign(
@@ -31,7 +31,7 @@ defmodule Bonfire.UI.Reflow.MapLive do
   def fetch_resources_places(filters \\ [], _socket) do
     with {:ok, things} <-
           ValueFlows.EconomicResource.EconomicResources.many([{:preload, :current_location}] ++ filters) do
-       IO.inspect(things: things)
+       debug(things: things)
 
         things
         |> Enum.map(
@@ -41,11 +41,11 @@ defmodule Bonfire.UI.Reflow.MapLive do
           )
         )
         |> Enum.filter(&Map.has_key?(&1, :geom))
-        # |> IO.inspect(label: "fetch_place_things")
+        # |> debug(label: "fetch_place_things")
 
     else
       e ->
-        IO.inspect(error: e)
+        debug(error: e)
         nil
     end
   end
@@ -53,7 +53,7 @@ defmodule Bonfire.UI.Reflow.MapLive do
   def fetch_events_places(filters \\ [], _socket) do
     with {:ok, things} <-
            ValueFlows.EconomicEvent.EconomicEvents.many([{:preload, :locations}] ++ filters) do
-      # IO.inspect(things)
+      # debug(things)
 
         things
         |> Enum.map(
@@ -63,19 +63,19 @@ defmodule Bonfire.UI.Reflow.MapLive do
           )
         )
         |> Enum.filter(&Map.has_key?(&1, :geom))
-        # |> IO.inspect(label: "fetch_place_things")
+        # |> debug(label: "fetch_place_things")
 
     else
       e ->
-        IO.inspect(error: e)
+        debug(error: e)
         nil
     end
   end
 
   # proxy relevent events to the map component # FIXME
   def handle_event("map_"<>_action = event, params, socket) do
-    IO.inspect(proxy_event: event)
-    IO.inspect(proxy_params: params)
+    debug(proxy_event: event)
+    debug(proxy_params: params)
     Bonfire.Geolocate.MapLive.handle_event(event, params, socket, true)
   end
 
