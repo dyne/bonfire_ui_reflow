@@ -5,8 +5,8 @@
       page_title={@page_title}
       page={@page}
       smart_input={@smart_input}
-      smart_input_prompt={e(assigns, :smart_input_prompt, "")}
-      smart_input_text={e(assigns, :smart_input_text, "")} 
+      smart_input_prompt={e(assigns, :smart_input_prompt, nil)}
+      smart_input_text={e(assigns, :smart_input_text, nil)} 
     />
 
     <Bonfire.UI.ValueFlows.ProcessHeroLive
