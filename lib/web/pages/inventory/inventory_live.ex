@@ -1,7 +1,7 @@
 defmodule Bonfire.UI.Reflow.InventoryLive do
   use Bonfire.Web, :live_view
   # use Surface.LiveView
-  use AbsintheClient, schema: Bonfire.GraphQL.Schema, action: [mode: :internal]
+  use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
 
   alias Bonfire.Web.LivePlugs
   alias Bonfire.Me.Users

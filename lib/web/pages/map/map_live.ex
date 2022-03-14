@@ -41,7 +41,7 @@ defmodule Bonfire.UI.Reflow.MapLive do
           )
         )
         |> Enum.filter(&Map.has_key?(&1, :geom))
-        # |> debug(label: "fetch_place_things")
+        # |> debug("fetch_place_things")
 
     else
       e ->
@@ -63,7 +63,7 @@ defmodule Bonfire.UI.Reflow.MapLive do
           )
         )
         |> Enum.filter(&Map.has_key?(&1, :geom))
-        # |> debug(label: "fetch_place_things")
+        # |> debug("fetch_place_things")
 
     else
       e ->

@@ -1,7 +1,7 @@
 defmodule Bonfire.UI.Reflow.ResourceLive do
   use Bonfire.Web, :surface_view
   # use Surface.LiveView
-  use AbsintheClient, schema: Bonfire.GraphQL.Schema, action: [mode: :internal]
+  use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
 
   alias Bonfire.UI.Social.{HashtagsLive, ParticipantsLive}
   alias Bonfire.UI.ValueFlows.{IntentCreateActivityLive, CreateMilestoneLive, ProposalFeedLive, FiltersLive}
@@ -146,7 +146,7 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
       {:noreply, socket
       |> assign(
         selected_tab: "track",
-        feed: e(resource, :track, []) #|> debug(label: "track")
+        feed: e(resource, :track, []) #|> debug("track")
       )}
     end
   end
@@ -161,7 +161,7 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
       {:noreply, socket
       |> assign(
         selected_tab: "trace",
-        feed: e(resource, :trace, []) #|> debug(label: "trace")
+        feed: e(resource, :trace, []) #|> debug("trace")
       )}
     end
   end
