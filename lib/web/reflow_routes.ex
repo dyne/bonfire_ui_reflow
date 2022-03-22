@@ -17,6 +17,12 @@ defmodule Bonfire.UI.Reflow.Routes do
         live "/reflow/map", MapLive
       end
 
+      scope "/" do
+        pipe_through :browser
+
+        live "/reflow/event/:id", Bonfire.Social.DiscussionLive, as: ValueFlows.EconomicEvent
+      end
+
     end
   end
 end
