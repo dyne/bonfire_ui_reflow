@@ -20,7 +20,7 @@ defmodule Bonfire.UI.Reflow.Routes do
       scope "/" do
         pipe_through :browser
 
-        live "/reflow/event/:id", Bonfire.Social.DiscussionLive, as: ValueFlows.EconomicEvent
+        live "/reflow/event/:id", Bonfire.Social.Web.DiscussionLive, as: ValueFlows.EconomicEvent
       end
 
     end
