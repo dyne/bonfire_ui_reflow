@@ -29,7 +29,6 @@ x-data="{
           resource={e(assigns, :resource, nil)}
           units={@units}
           action="work"
-          intent_url="/task/"
           extra_components={[Bonfire.UI.Reflow.FormExtrasLive]}
           />
         </div>
