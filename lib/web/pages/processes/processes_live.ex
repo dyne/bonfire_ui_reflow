@@ -7,7 +7,7 @@ defmodule Bonfire.UI.Reflow.ProcessesLive do
   alias Bonfire.UI.ValueFlows.{IntentCreateActivityLive, CreateMilestoneLive, ProposalFeedLive, FiltersLive}
   alias Bonfire.Web.LivePlugs
   alias Bonfire.Me.Users
-  alias Bonfire.Me.Web.{CreateUserLive, LoggedDashboardLive}
+  alias Bonfire.Me.Web.CreateUserLive
   # alias Bonfire.UI.Coordination.ResourceWidget
 
   def mount(params, session, socket) do
