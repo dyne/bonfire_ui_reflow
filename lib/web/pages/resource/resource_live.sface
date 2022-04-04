@@ -54,6 +54,7 @@ x-data="{
       class="divide-y dark:divide-gray-600">
       {#for event <- e(assigns, :feed, []) }
         <Bonfire.UI.Social.ActivityLive
+            id={"ra:"<>e(event, :id, Pointers.ULID.generate())}
             activity={event}
             show_likes={false}
           />

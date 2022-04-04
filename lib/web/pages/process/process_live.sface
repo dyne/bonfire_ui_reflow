@@ -41,6 +41,7 @@
     <div class="divide-y dark:divide-gray-600">
       {#for event <- e(@process, :outputs, [])}
         <Bonfire.UI.Social.ActivityLive
+            id={"ea:"<>e(event, :id, Pointers.ULID.generate())}
             activity={event}
             show_likes={true}
           />
