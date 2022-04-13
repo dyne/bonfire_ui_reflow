@@ -4,12 +4,12 @@
   </li>
 
   <li>
-    <LivePatch to={"/processes"} class={"w-full flex items-center text-sm font-regular text-base-content focus:bg-primary", "hover:bg-primary bg-primary text-primary-content  ": @page == "processes"}>
+    <LivePatch to={"/processes"} class={"w-full flex items-center text-sm font-regular text-base-content focus:bg-primary", "hover:bg-primary bg-primary text-base-content  ": @page == "processes"}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 group-hover:bg-blueGray-300">
         <svg
           aria-labelledby="navigation_lists"
           xmlns="http://www.w3.org/2000/svg"
-          class={"w-5 h-5 transition duration-150 ease-in-out text-primary-content-600", "text-primary-content-800": @page == "processes"}
+          class={"w-5 h-5 transition duration-150 ease-in-out text-base-content-600", "text-base-content-800": @page == "processes"}
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -21,11 +21,11 @@
 </li>
 
   <li>
-    <LivePatch :if={current_user(assigns)} to={path(current_user(assigns))} class={"w-full flex items-center text-sm font-regular text-base-content focus:bg-primary", "hover:bg-primary bg-primary text-primary-content  ": @page == "profile"}>
+    <LivePatch :if={current_user(assigns)} to={path(current_user(assigns))} class={"w-full flex items-center text-sm font-regular text-base-content focus:bg-primary", "hover:bg-primary bg-primary text-base-content  ": @page == "profile"}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 group-hover:bg-blueGray-300">
       <svg
         aria-labelledby="navigation_profile"
-        class={"w-5 h-5 transition duration-150 ease-in-out text-primary-content-600", "text-primary-content-800": @page == "profile"}
+        class={"w-5 h-5 transition duration-150 ease-in-out text-base-content-600", "text-base-content-800": @page == "profile"}
         fill="none" stroke="currentColor"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg">
@@ -36,12 +36,12 @@
 </li>
 
   <li>
-    <LivePatch to={"/inventory"} class={"w-full flex items-center text-sm font-regular text-base-content focus:bg-primary", "hover:bg-primary bg-primary text-primary-content  ": @page == "inventory"}>
+    <LivePatch to={"/inventory"} class={"w-full flex items-center text-sm font-regular text-base-content focus:bg-primary", "hover:bg-primary bg-primary text-base-content  ": @page == "inventory"}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 group-hover:bg-blueGray-300">
         <svg
           aria-labelledby="navigation_lists"
           xmlns="http://www.w3.org/2000/svg"
-          class={"w-5 h-5 transition duration-150 ease-in-out text-primary-content-600", "text-primary-content-800": @page == "inventory"}
+          class={"w-5 h-5 transition duration-150 ease-in-out text-base-content-600", "text-base-content-800": @page == "inventory"}
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -53,12 +53,12 @@
 </li>
 
   <li>
-    <LivePatch to={"/materials"} class={"w-full flex items-center text-sm font-regular text-base-content focus:bg-primary", "hover:bg-primary bg-primary text-primary-content  ": @page == "materials"}>
+    <LivePatch to={"/materials"} class={"w-full flex items-center text-sm font-regular text-base-content focus:bg-primary", "hover:bg-primary bg-primary text-base-content  ": @page == "materials"}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 group-hover:bg-blueGray-300">
         <svg
           aria-labelledby="navigation_lists"
           xmlns="http://www.w3.org/2000/svg"
-          class={"w-5 h-5 transition duration-150 ease-in-out text-primary-content-600", "text-primary-content-800": @page == "materials"}
+          class={"w-5 h-5 transition duration-150 ease-in-out text-base-content-600", "text-base-content-800": @page == "materials"}
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -70,11 +70,11 @@
 </li>
 
   <li>
-    <LivePatch to={"/reflow/map"} class={"w-full flex items-center text-sm font-regular text-base-content focus:bg-primary", "hover:bg-primary bg-primary text-primary-content  ": @page == "map"}>
+    <LivePatch to={"/reflow/map"} class={"w-full flex items-center text-sm font-regular text-base-content focus:bg-primary", "hover:bg-primary bg-primary text-base-content  ": @page == "map"}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 hover:bg-blueGray-300">
       <svg
         aria-labelledby="navigation_profile"
-        class={"w-5 h-5 transition duration-150 ease-in-out text-primary-content-600", "text-primary-content-800": @page == "map"}
+        class={"w-5 h-5 transition duration-150 ease-in-out text-base-content-600", "text-base-content-800": @page == "map"}
         fill="none" stroke="currentColor"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg">
