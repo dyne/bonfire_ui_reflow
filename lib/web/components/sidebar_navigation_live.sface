@@ -9,7 +9,7 @@
         <svg
           aria-labelledby="navigation_lists"
           xmlns="http://www.w3.org/2000/svg"
-          class={"w-5 h-5 transition duration-150 ease-in-out text-base-content-600", "text-base-content-800": @page == "processes"}
+          class={"w-5 h-5 transition duration-150 ease-in-out text-base-content opacity-60", "text-base-content opacity-80": @page == "processes"}
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -25,7 +25,7 @@
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 group-hover:bg-blueGray-300">
       <svg
         aria-labelledby="navigation_profile"
-        class={"w-5 h-5 transition duration-150 ease-in-out text-base-content-600", "text-base-content-800": @page == "profile"}
+        class={"w-5 h-5 transition duration-150 ease-in-out text-base-content opacity-60", "text-base-content opacity-80": @page == "profile"}
         fill="none" stroke="currentColor"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg">
@@ -41,7 +41,7 @@
         <svg
           aria-labelledby="navigation_lists"
           xmlns="http://www.w3.org/2000/svg"
-          class={"w-5 h-5 transition duration-150 ease-in-out text-base-content-600", "text-base-content-800": @page == "inventory"}
+          class={"w-5 h-5 transition duration-150 ease-in-out text-base-content opacity-60", "text-base-content opacity-80": @page == "inventory"}
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -58,7 +58,7 @@
         <svg
           aria-labelledby="navigation_lists"
           xmlns="http://www.w3.org/2000/svg"
-          class={"w-5 h-5 transition duration-150 ease-in-out text-base-content-600", "text-base-content-800": @page == "materials"}
+          class={"w-5 h-5 transition duration-150 ease-in-out text-base-content opacity-60", "text-base-content opacity-80": @page == "materials"}
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -74,7 +74,7 @@
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 hover:bg-blueGray-300">
       <svg
         aria-labelledby="navigation_profile"
-        class={"w-5 h-5 transition duration-150 ease-in-out text-base-content-600", "text-base-content-800": @page == "map"}
+        class={"w-5 h-5 transition duration-150 ease-in-out text-base-content opacity-60", "text-base-content opacity-80": @page == "map"}
         fill="none" stroke="currentColor"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg">
