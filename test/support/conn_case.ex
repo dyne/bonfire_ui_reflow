@@ -22,6 +22,9 @@ defmodule Bonfire.UI.Reflow.ConnCase do
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
+
+      import Bonfire.UI.Common.Testing.Helpers
+
       import Phoenix.LiveViewTest
       import Bonfire.UI.Reflow.ConnCase
       import Bonfire.UI.Reflow.Test.ConnHelpers

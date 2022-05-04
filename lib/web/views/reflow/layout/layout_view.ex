@@ -1,3 +1,3 @@
 defmodule Bonfire.UI.Reflow.LayoutView do
-  use Bonfire.Web, {:layout_view, [namespace: Bonfire.UI.Reflow]}
+  use Bonfire.UI.Common.Web, {:layout_view, [namespace: Bonfire.UI.Reflow]}
 end

@@ -1,5 +1,5 @@
 defmodule Bonfire.UI.Reflow.ProfileInventoryLive do
-  use Bonfire.Web, :stateless_component
+  use Bonfire.UI.Common.Web, :stateless_component
   use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
 
   prop user, :map

@@ -1,17 +1,18 @@
 defmodule Bonfire.UI.Reflow.InventoryLive do
-  use Bonfire.Web, :live_view
+  use Bonfire.UI.Common.Web, :live_view
   # use Surface.LiveView
   use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
 
-  alias Bonfire.Web.LivePlugs
+  alias Bonfire.Me.Web.LivePlugs
   alias Bonfire.Me.Users
 
   def mount(params, session, socket) do
-    LivePlugs.live_plug params, session, socket, [
+    live_plug params, session, socket, [
       LivePlugs.LoadCurrentAccount,
       LivePlugs.LoadCurrentUser,
-      LivePlugs.StaticChanged,
-      LivePlugs.Csrf, LivePlugs.Locale,
+      Bonfire.UI.Common.LivePlugs.StaticChanged,
+      Bonfire.UI.Common.LivePlugs.Csrf,
+      Bonfire.UI.Common.LivePlugs.Locale,
       &mounted/3,
     ]
   end

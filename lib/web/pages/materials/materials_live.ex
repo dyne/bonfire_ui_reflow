@@ -1,21 +1,22 @@
 defmodule Bonfire.UI.Reflow.MaterialsLive do
-  use Bonfire.Web, :live_view
+  use Bonfire.UI.Common.Web, :live_view
   # use Surface.LiveView
   use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
 
   alias Bonfire.UI.Social.{HashtagsLive, ParticipantsLive}
   alias Bonfire.UI.ValueFlows.{IntentCreateActivityLive, CreateMilestoneLive, ProposalFeedLive, FiltersLive}
-  alias Bonfire.Web.LivePlugs
+  alias Bonfire.Me.Web.LivePlugs
   alias Bonfire.Me.Users
   alias Bonfire.Me.Web.CreateUserLive
   # alias Bonfire.UI.Coordination.ResourceWidget
 
   def mount(params, session, socket) do
-    LivePlugs.live_plug params, session, socket, [
+    live_plug params, session, socket, [
       LivePlugs.LoadCurrentAccount,
       LivePlugs.LoadCurrentUser,
-      LivePlugs.StaticChanged,
-      LivePlugs.Csrf, LivePlugs.Locale,
+      Bonfire.UI.Common.LivePlugs.StaticChanged,
+      Bonfire.UI.Common.LivePlugs.Csrf,
+      Bonfire.UI.Common.LivePlugs.Locale,
       &mounted/3,
     ]
   end
@@ -63,8 +64,8 @@ defmodule Bonfire.UI.Reflow.MaterialsLive do
   }
   """
   def resources(params \\ %{}, socket), do: liveql(socket, :resources, params)
-  defdelegate handle_params(params, attrs, socket), to: Bonfire.Common.LiveHandlers
-  def handle_event(action, attrs, socket), do: Bonfire.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)
-  def handle_info(info, socket), do: Bonfire.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
+  defdelegate handle_params(params, attrs, socket), to: Bonfire.UI.Common.LiveHandlers
+  def handle_event(action, attrs, socket), do: Bonfire.UI.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)
+  def handle_info(info, socket), do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
 
 end
