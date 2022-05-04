@@ -26,7 +26,7 @@ defmodule Bonfire.UI.Reflow.ConnCase do
       import Bonfire.UI.Common.Testing.Helpers
 
       import Phoenix.LiveViewTest
-      import Bonfire.UI.Reflow.ConnCase
+      # import Bonfire.UI.Reflow.ConnCase
       import Bonfire.UI.Reflow.Test.ConnHelpers
       import Bonfire.UI.Reflow.Test.FakeHelpers
       alias Bonfire.UI.Reflow.Fake
