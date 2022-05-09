@@ -3,7 +3,7 @@ x-data="{
   open_passport_data: false
   }">
   <section class="bg-base-100 shadow w-center ">
-  <Bonfire.UI.Social.PageHeaderLive.render
+  <Bonfire.UI.Common.PageHeaderLive.render
       page_title={@page_title}
       page={@page}
       smart_input={@smart_input}
