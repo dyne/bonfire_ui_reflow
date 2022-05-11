@@ -57,6 +57,7 @@ x-data="{
             id={"ra:"<>e(event, :id, Pointers.ULID.generate())}
             activity={event}
             show_likes={false}
+            object_boundary={:skip}
           />
       {/for}
   </div>
