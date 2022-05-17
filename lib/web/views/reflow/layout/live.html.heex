@@ -24,7 +24,7 @@
     </div>
   <% else %>
     <div class="h-screen overflow-hidden">
-      <%= live_component(@socket, Bonfire.UI.Social.HeaderUserLive, assigns_clean(assigns)) %>
+      <%= live_component(@socket, Bonfire.UI.Common.HeaderUserLive, assigns_clean(assigns)) %>
       <div class="h-screen overflow-y-auto">
       <div class="container flex max-w-screen-xl mx-auto">
         <%# = live_component(@socket, Bonfire.UI.ValueFlows.SidebarLive, assigns_clean(assigns)) %>

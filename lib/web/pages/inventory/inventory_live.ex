@@ -3,7 +3,7 @@ defmodule Bonfire.UI.Reflow.InventoryLive do
   # use Surface.LiveView
   use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
 
-  alias Bonfire.Me.Web.LivePlugs
+  alias Bonfire.UI.Me.LivePlugs
   alias Bonfire.Me.Users
 
   def mount(params, session, socket) do
