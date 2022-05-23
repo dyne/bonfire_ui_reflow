@@ -9,7 +9,6 @@
     <%= raw Config.get!(:endpoint_module).include_assets(@conn)%>
   </head>
   <body id="reflow-root" class="overflow">
-    <%= if Code.ensure_loaded?(Thesis.View), do: Thesis.View.thesis_editor(@conn) %>
     <%= @inner_content %>
   </body>
 </html>
