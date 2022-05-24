@@ -137,7 +137,7 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
   # def trace(params \\ %{}, socket), do: liveql(socket, :economic_resource, params)
 
 
-  def handle_params(%{"tab"=>"track"}, attrs, socket) do
+  def do_handle_params(%{"tab"=>"track"}, attrs, socket) do
     resource = e(socket.assigns, :resource, nil)
 
     if resource do
@@ -152,7 +152,7 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
     end
   end
 
-  def handle_params(_, attrs, socket) do
+  def do_handle_params(_, attrs, socket) do
     resource = e(socket.assigns, :resource, nil)
 
     if resource do
@@ -167,7 +167,15 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
     end
   end
 
-  defdelegate handle_params(params, attrs, socket), to: Bonfire.UI.Common.LiveHandlers
+  def handle_params(params, uri, socket) do
+    # poor man's hook I guess
+    with {_, socket} <- Bonfire.UI.Common.LiveHandlers.handle_params(params, uri, socket) do
+      undead_params(socket, fn ->
+        do_handle_params(params, uri, socket)
+      end)
+    end
+  end
+
   def handle_event(action, attrs, socket), do: Bonfire.UI.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)
   def handle_info(info, socket), do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
 
