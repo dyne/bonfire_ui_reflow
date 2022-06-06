@@ -1,20 +1,10 @@
 <div id="reflow-live">
-  <% info = live_flash(@flash, :info) %>
-  <% error = live_flash(@flash, :error) %>
-  <%= if info || error do %>
-    <div id="flash-messages" class="absolute z-50 right-8 top-8">
-      <%= if info do %>
-        <p class="alert alert-info " role="alert"
-          phx-click="lv:clear-flash"
-          phx-value-key="info"><%= info %></p>
-      <% end %>
-      <%= if error do %>
-        <p class="alert alert-error " role="alert"
-          phx-click="lv:clear-flash"
-          phx-value-key="error"><%= error %></p>
-      <% end %>
-    </div>
-  <% end %>
+  <.live_component 
+    module={Bonfire.UI.Common.NotificationLive} 
+    id="notification" 
+    notification={e(assigns, :notification, nil)}
+    current_user={current_user(assigns)}
+  />
 
   <%= if !current_user(assigns) do %>
     <div class="container h-screen max-w-screen-lg mx-auto">
