@@ -6,6 +6,8 @@ defmodule Bonfire.UI.Reflow.ProfileInventoryLive do
   prop resources, :map
   prop selected_tab, :string
 
+  slot header
+
   def list_resources(user_id) do
 
     resources = agent_resources(%{id: user_id})
