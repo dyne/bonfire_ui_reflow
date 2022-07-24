@@ -3,10 +3,10 @@
     module={Bonfire.UI.Common.NotificationLive} 
     id="notification" 
     notification={e(assigns, :notification, nil)}
-    current_user={current_user(assigns)}
+    current_user={current_user(@__context__)}
   />
 
-  <%= if !current_user(assigns) do %>
+  <%= if !current_user(@__context__) do %>
     <div class="container h-screen max-w-screen-lg mx-auto">
       <%= live_component(@socket, Bonfire.UI.Social.LogoHeaderLive, assigns_clean(assigns)) %>
       <%= live_component(@socket, Bonfire.UI.Social.HeaderGuestLive, assigns_clean(assigns)) %>
