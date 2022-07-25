@@ -1,13 +1,6 @@
 <main class="lg:flex">
   <section class="min-h-screen bg-base-100 shadow w-center ">
 
-    <Bonfire.UI.Common.PageHeaderLive
-      page_title={@page_title}
-      page={@page}
-      smart_input={@smart_input}
-      smart_input_prompt={e(assigns, :smart_input_prompt, nil)}
-      smart_input_text={e(assigns, :smart_input_text, nil)} 
-    />
 
     <Bonfire.UI.ValueFlows.ProcessHeroLive
     process={@process}
@@ -18,10 +11,11 @@
 
         <div class="flex items-center">
           <Bonfire.UI.ValueFlows.SelectEconomicEventLive 
-          process={@process}
-          units={@units}
-          action="work"
-          extra_components={[Bonfire.UI.Reflow.FormExtrasLive]}
+            open={false}
+            process={@process}
+            units={@units}
+            action="work"
+            extra_components={[Bonfire.UI.Reflow.FormExtrasLive]}
           />
         </div>
       </div>
