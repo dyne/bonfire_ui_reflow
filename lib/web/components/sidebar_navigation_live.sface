@@ -21,7 +21,7 @@
 </li>
 
   <li>
-    <LivePatch :if={current_user(@__context__)} to={path(current_user(@__context__))} class={"w-full flex items-center text-sm font-regular text-base-content focus:bg-primary", "hover:bg-primary bg-primary text-base-content  ": @page == "profile"}>
+    <LivePatch :if={@current_user} to={path(@current_user)} class={"w-full flex items-center text-sm font-regular text-base-content focus:bg-primary", "hover:bg-primary bg-primary text-base-content  ": @page == "profile"}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center  group-">
       <svg
         aria-labelledby="navigation_profile"
