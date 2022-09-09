@@ -10,6 +10,9 @@ defmodule Bonfire.UI.Reflow.ProcessesLive do
   alias Bonfire.UI.Me.CreateUserLive
   # alias Bonfire.UI.Coordination.ResourceWidget
 
+
+  declare_extension("Reflow", icon: "cil:recycle")
+
   def mount(params, session, socket) do
 
     live_plug params, session, socket, [
@@ -29,7 +32,9 @@ defmodule Bonfire.UI.Reflow.ProcessesLive do
     |> assign(
       page_title: "All Processes",
       page: "processes",
-      smart_input: false
+      smart_input: false,
+      processes: [],
+      page_info: nil
     )}
   end
 
@@ -53,14 +58,15 @@ defmodule Bonfire.UI.Reflow.ProcessesLive do
   def processes_pages(params \\ %{}, socket), do: liveql(socket, :processes_pages, params)
 
   def fetch(params \\ %{}, socket) do
-    %{edges: processes, page_info: page_info} = processes_pages(params, socket)
-    |> IO.inspect
-
-    socket
-    |> assign(
-      processes: (e(socket.assigns, :processes, []) ++ processes) |> Enum.uniq,
-      page_info: page_info
-    )
+    with %{edges: processes, page_info: page_info} <- processes_pages(params, socket) do
+      socket
+      |> assign(
+        processes: (e(socket.assigns, :processes, []) ++ processes) |> Enum.uniq,
+        page_info: page_info
+      )
+    else _ ->
+      socket
+    end
   end
 
   def handle_event("load-more", params, socket) do
