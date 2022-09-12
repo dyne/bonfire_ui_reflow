@@ -1,37 +1,40 @@
 defmodule Bonfire.UI.Reflow.InventoryLive do
   use Bonfire.UI.Common.Web, :live_view
   # use Surface.LiveView
-  use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
+  use AbsintheClient,
+    schema: Bonfire.API.GraphQL.Schema,
+    action: [mode: :internal]
 
   alias Bonfire.UI.Me.LivePlugs
   alias Bonfire.Me.Users
 
   def mount(params, session, socket) do
-    live_plug params, session, socket, [
+    live_plug(params, session, socket, [
       LivePlugs.LoadCurrentAccount,
       LivePlugs.LoadCurrentUser,
       Bonfire.UI.Common.LivePlugs.StaticChanged,
       Bonfire.UI.Common.LivePlugs.Csrf,
       Bonfire.UI.Common.LivePlugs.Locale,
-      &mounted/3,
-    ]
+      &mounted/3
+    ])
   end
 
   defp mounted(_params, _session, socket) do
     resources = agent_resources(%{id: e(current_user(socket), :id, nil)}, socket)
+
     # debug(Jason.encode!(resources))
     # debug(resources)
 
-    {:ok, socket
-    |> assign(
-      page_title: "My inventory",
-      resource_url_prefix: "/resource/",
-      page: "inventory",
-      smart_input: false,
-      resources: e(resources, :agent, :inventoried_economic_resources, [])
-    )}
+    {:ok,
+     assign(
+       socket,
+       page_title: "My inventory",
+       resource_url_prefix: "/resource/",
+       page: "inventory",
+       smart_input: false,
+       resources: e(resources, :agent, :inventoried_economic_resources, [])
+     )}
   end
-
 
   @graphql """
   query($id: ID) {
@@ -60,7 +63,6 @@ defmodule Bonfire.UI.Reflow.InventoryLive do
     }
   }}
   """
-  def agent_resources(params \\ %{}, socket), do: liveql(socket, :agent_resources, params)
-
-
+  def agent_resources(params \\ %{}, socket),
+    do: liveql(socket, :agent_resources, params)
 end

@@ -4,5 +4,4 @@ defmodule Bonfire.UI.Reflow.SidebarNavigationLive do
 
   prop page, :string, required: true
   prop username, :string, required: true
-
 end

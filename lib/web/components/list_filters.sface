@@ -1,67 +1,96 @@
 <div class="flex-1 flex space-x-2">
-    <div class="flex w-80  rounded-md shadow-sm">
-
+  <div class="flex w-80  rounded-md shadow-sm">
     <label class="sr-only">Search activities</label>
     <div class="relative flex-grow focus-within:z-10">
-        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-
-        <svg class="h-5 w-5 text-base-content opacity-60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+      <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+        <svg
+          class="h-5 w-5 text-base-content opacity-60"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+            clip-rule="evenodd"
+          />
         </svg>
-        </div>
-        <input type="text" class="focus:ring-secondary-500 focus:border-indigo-500 w-full rounded-none rounded-md pl-10 sm:block sm:text-sm border-gray-300" placeholder="Search tasks">
+      </div>
+      <input
+        type="text"
+        class="focus:ring-secondary-500 focus:border-indigo-500 w-full rounded-none rounded-md pl-10 sm:block sm:text-sm border-gray-300"
+        placeholder="Search tasks"
+      />
     </div>
+  </div>
 
-    </div>
-
-    <div
+  <div
     x-cloak
     x-data="{ open: false }"
     @keydown.escape.stop="open = false"
     @click.outside="open = false"
-    class="relative block  text-left">
-
+    class="relative block  text-left"
+  >
     <button
-        @click="open = !open"
-        aria-haspopup="true"
-        x-bind:aria-expanded="open"
-        aria-expanded="true"
-        type="button"
-        class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-base-content opacity-70 bg-base-100 hover:bg-neutral hover:bg-opacity-30  focus:outline-none focus:ring-1 focus:ring-secondary-500 focus:border-indigo-500">
-        <svg class="h-5 w-5 text-base-content opacity-60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      @click="open = !open"
+      aria-haspopup="true"
+      x-bind:aria-expanded="open"
+      aria-expanded="true"
+      type="button"
+      class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-base-content opacity-70 bg-base-100 hover:bg-neutral hover:bg-opacity-30  focus:outline-none focus:ring-1 focus:ring-secondary-500 focus:border-indigo-500"
+    >
+      <svg
+        class="h-5 w-5 text-base-content opacity-60"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        aria-hidden="true"
+      >
         <path d="M3 3a1 1 0 000 2h11a1 1 0 100-2H3zM3 7a1 1 0 000 2h5a1 1 0 000-2H3zM3 11a1 1 0 100 2h4a1 1 0 100-2H3zM13 16a1 1 0 102 0v-5.586l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 101.414 1.414L13 10.414V16z" />
-        </svg>
-        <span class="ml-2">Sort</span>
-        <svg class="ml-2.5 -mr-1.5 h-5 w-5 text-base-content opacity-60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-        </svg>
+      </svg>
+      <span class="ml-2">Sort</span>
+      <svg
+        class="ml-2.5 -mr-1.5 h-5 w-5 text-base-content opacity-60"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+          clip-rule="evenodd"
+        />
+      </svg>
     </button>
-        <div
-        x-description="sort tasks dropdown menu, show/hide based on menu state."
-        x-show="open"
-        x-transition:enter="transition ease-out duration-100"
-        x-transition:enter-start="transform opacity-0 scale-95"
-        x-transition:enter-end="transform opacity-60 scale-100"
-        x-transition:leave="transition ease-in duration-75"
-        x-transition:leave-start="transform opacity-60 scale-100"
-        x-transition:leave-end="transform opacity-0 scale-95"
-        class="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-base-100 ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none"
-        role="menu"
-        aria-orientation="vertical">
-            <div class="py-1" role="none">
-            <div class="block w-full px-4 py-2 text-sm text-left text-base-content opacity-70 transition duration-150 ease-in-out hover:bg-neutral hover:bg-opacity-30 ">
-                Newest
-            </div>
-            <div class="block w-full px-4 py-2 text-sm text-left text-base-content opacity-70 transition duration-150 ease-in-out hover:bg-neutral hover:bg-opacity-30 ">
-                Oldest
-            </div>
-            <div class="block w-full px-4 py-2 text-sm text-left text-base-content opacity-70 transition duration-150 ease-in-out hover:bg-neutral hover:bg-opacity-30 ">
-                Most voted
-            </div>
-            <div class="block w-full px-4 py-2 text-sm text-left text-base-content opacity-70 transition duration-150 ease-in-out hover:bg-neutral hover:bg-opacity-30 ">
-                Most discussed
-            </div>
-            </div>
+    <div
+      x-description="sort tasks dropdown menu, show/hide based on menu state."
+      x-show="open"
+      x-transition:enter="transition ease-out duration-100"
+      x-transition:enter-start="transform opacity-0 scale-95"
+      x-transition:enter-end="transform opacity-60 scale-100"
+      x-transition:leave="transition ease-in duration-75"
+      x-transition:leave-start="transform opacity-60 scale-100"
+      x-transition:leave-end="transform opacity-0 scale-95"
+      class="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-base-100 ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none"
+      role="menu"
+      aria-orientation="vertical"
+    >
+      <div class="py-1" role="none">
+        <div class="block w-full px-4 py-2 text-sm text-left text-base-content opacity-70 transition duration-150 ease-in-out hover:bg-neutral hover:bg-opacity-30">
+          Newest
         </div>
+        <div class="block w-full px-4 py-2 text-sm text-left text-base-content opacity-70 transition duration-150 ease-in-out hover:bg-neutral hover:bg-opacity-30">
+          Oldest
+        </div>
+        <div class="block w-full px-4 py-2 text-sm text-left text-base-content opacity-70 transition duration-150 ease-in-out hover:bg-neutral hover:bg-opacity-30">
+          Most voted
+        </div>
+        <div class="block w-full px-4 py-2 text-sm text-left text-base-content opacity-70 transition duration-150 ease-in-out hover:bg-neutral hover:bg-opacity-30">
+          Most discussed
+        </div>
+      </div>
     </div>
+  </div>
 </div>

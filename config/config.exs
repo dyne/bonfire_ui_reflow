@@ -10,7 +10,6 @@ import Config
 # include all used Bonfire extensions
 import_config "bonfire_ui_reflow.exs"
 
-
 #### Basic configuration
 
 # You probably won't want to touch these. You might override some in

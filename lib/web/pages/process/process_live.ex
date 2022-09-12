@@ -1,40 +1,50 @@
 defmodule Bonfire.UI.Reflow.ProcessLive do
   use Bonfire.UI.Common.Web, :surface_live_view
   # use Surface.LiveView
-  use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
+  use AbsintheClient,
+    schema: Bonfire.API.GraphQL.Schema,
+    action: [mode: :internal]
 
-  alias Bonfire.UI.Social.{HashtagsLive, ParticipantsLive}
-  alias Bonfire.UI.ValueFlows.{IntentCreateActivityLive, CreateMilestoneLive, ProposalFeedLive, FiltersLive}
+  alias Bonfire.UI.Social.HashtagsLive
+  alias Bonfire.UI.Social.ParticipantsLive
+
+  alias Bonfire.UI.ValueFlows.IntentCreateActivityLive
+  alias Bonfire.UI.ValueFlows.CreateMilestoneLive
+  alias Bonfire.UI.ValueFlows.ProposalFeedLive
+  alias Bonfire.UI.ValueFlows.FiltersLive
+
   alias Bonfire.UI.Me.LivePlugs
   alias Bonfire.Me.Users
   alias Bonfire.UI.Me.CreateUserLive
+
   # alias Bonfire.UI.Reflow.ResourceWidget
 
   def mount(params, session, socket) do
-
-    live_plug params, session, socket, [
+    live_plug(params, session, socket, [
       LivePlugs.LoadCurrentAccount,
       LivePlugs.LoadCurrentUser,
       Bonfire.UI.Common.LivePlugs.StaticChanged,
       Bonfire.UI.Common.LivePlugs.Csrf,
       Bonfire.UI.Common.LivePlugs.Locale,
-      &mounted/3,
-    ]
+      &mounted/3
+    ])
   end
 
-  defp mounted(%{"id"=> id} = _params, _session, socket) do
-    {:ok, socket
-    |> assign(
-      page_title: "process",
-      page: "process",
-      selected_tab: "events",
-      smart_input: false,
-      units: units_for_select(socket),
-      process: process(%{id: id}, socket) #|> debug()
-      # resource: resource,
-    )}
-  end
+  defp mounted(%{"id" => id} = _params, _session, socket) do
+    {:ok,
+     assign(
+       socket,
+       page_title: "process",
+       page: "process",
+       selected_tab: "events",
+       smart_input: false,
+       units: units_for_select(socket),
+       # |> debug()
+       process: process(%{id: id}, socket)
 
+       # resource: resource,
+     )}
+  end
 
   @process_fields_basic """
   __typename
@@ -128,11 +138,25 @@ defmodule Bonfire.UI.Reflow.ProcessLive do
       }
     }
   """
-  def units_pages(params \\ %{}, socket), do: liveql(socket, :units_pages, params)
-  def units_for_select(socket), do: units_pages(socket) |> e(:edges, []) |> Enum.map(&{&1.label, &1.id}) #|> IO.inspect
+  def units_pages(params \\ %{}, socket),
+    do: liveql(socket, :units_pages, params)
 
-  defdelegate handle_params(params, attrs, socket), to: Bonfire.UI.Common.LiveHandlers
-  def handle_event(action, attrs, socket), do: Bonfire.UI.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)
-  def handle_info(info, socket), do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
+  # |> IO.inspect
+  def units_for_select(socket),
+    do: units_pages(socket) |> e(:edges, []) |> Enum.map(&{&1.label, &1.id})
 
+  defdelegate handle_params(params, attrs, socket),
+    to: Bonfire.UI.Common.LiveHandlers
+
+  def handle_event(action, attrs, socket),
+    do:
+      Bonfire.UI.Common.LiveHandlers.handle_event(
+        action,
+        attrs,
+        socket,
+        __MODULE__
+      )
+
+  def handle_info(info, socket),
+    do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
 end

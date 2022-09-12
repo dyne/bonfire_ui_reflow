@@ -1,14 +1,23 @@
 <div id="event_date" phx-update="ignore" class="flex mt-3 space-x-2">
-    <div class="w-1/2">
-        <label>Event date <DateInput name="economic_event[has_point_in_time]" class="flex-1 block w-full font-bold text-base-content opacity-80 placeholder-gray-600 bg-base-100 border-gray-300 rounded-md shadow-sm text-opacity-60 placeholder-opacity-60 focus:ring-secondary-500 focus:border-indigo-500 sm:text-sm" /></label>
-    </div>
+  <div class="w-1/2">
+    <label>Event date <DateInput
+        name="economic_event[has_point_in_time]"
+        class="flex-1 block w-full font-bold text-base-content opacity-80 placeholder-gray-600 bg-base-100 border-gray-300 rounded-md shadow-sm text-opacity-60 placeholder-opacity-60 focus:ring-secondary-500 focus:border-indigo-500 sm:text-sm"
+      /></label>
+  </div>
 </div>
 <div id="event_dates" phx-update="ignore" class="flex mt-3 space-x-2">
-    <div class="w-1/2">
-        <label>Start <DateInput name="economic_event[has_beginning]" class="flex-1 block w-full font-bold text-base-content opacity-80 placeholder-gray-600 bg-base-100 border-gray-300 rounded-md shadow-sm text-opacity-60 placeholder-opacity-60 focus:ring-secondary-500 focus:border-indigo-500 sm:text-sm" /></label>
-    </div>
-    <div class="flex-1">
-        <label>End <DateInput name="economic_event[has_end]" class="flex-1 block w-full font-bold text-base-content opacity-80 bg-base-100 border-gray-300 rounded-md shadow-sm text-opacity-60 placeholder-opacity-60 focus:ring-secondary-500 focus:border-indigo-500 sm:text-sm"/>
-        </label>
-    </div>
+  <div class="w-1/2">
+    <label>Start <DateInput
+        name="economic_event[has_beginning]"
+        class="flex-1 block w-full font-bold text-base-content opacity-80 placeholder-gray-600 bg-base-100 border-gray-300 rounded-md shadow-sm text-opacity-60 placeholder-opacity-60 focus:ring-secondary-500 focus:border-indigo-500 sm:text-sm"
+      /></label>
+  </div>
+  <div class="flex-1">
+    <label>End <DateInput
+        name="economic_event[has_end]"
+        class="flex-1 block w-full font-bold text-base-content opacity-80 bg-base-100 border-gray-300 rounded-md shadow-sm text-opacity-60 placeholder-opacity-60 focus:ring-secondary-500 focus:border-indigo-500 sm:text-sm"
+      />
+    </label>
+  </div>
 </div>

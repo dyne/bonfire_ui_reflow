@@ -1,16 +1,11 @@
 <main class="lg:flex">
-  <section class="min-h-screen bg-base-100 shadow w-center ">
+  <section class="min-h-screen bg-base-100 shadow w-center">
+    <Bonfire.UI.ValueFlows.ProcessHeroLive process={@process} />
 
-
-    <Bonfire.UI.ValueFlows.ProcessHeroLive
-    process={@process}
-      />
-    
     <div>
-      <div class="flex items-center p-3 border-b ">
-
+      <div class="flex items-center p-3 border-b">
         <div class="flex items-center">
-          <Bonfire.UI.ValueFlows.SelectEconomicEventLive 
+          <Bonfire.UI.ValueFlows.SelectEconomicEventLive
             open={false}
             process={@process}
             units={@units}
@@ -21,11 +16,14 @@
       </div>
     </div>
 
-
     <div class="block">
-      <div class="px-5 border-b ">
+      <div class="px-5 border-b">
         <nav class="flex -mb-px space-x-8" aria-label="Tabs">
-          <a href="#" class="px-1 py-4 text-sm font-medium  border-b-2 border-pink-600 dark: dark:border-pink-500 whitespace-nowrap" aria-current="page">
+          <a
+            href="#"
+            class="px-1 py-4 text-sm font-medium  border-b-2 border-pink-600 dark: dark:border-pink-500 whitespace-nowrap"
+            aria-current="page"
+          >
             Activities
           </a>
         </nav>
@@ -35,11 +33,11 @@
     <div class="divide-y dark:divide-gray-600">
       {#for event <- e(@process, :outputs, [])}
         <Bonfire.UI.Social.ActivityLive
-            id={"ea:"<>e(event, :id, Pointers.ULID.generate())}
-            activity={event}
-            show_likes={true}
-            object_boundary={:skip}
-          />
+          id={"ea:" <> e(event, :id, Pointers.ULID.generate())}
+          activity={event}
+          show_likes
+          object_boundary={:skip}
+        />
       {/for}
     </div>
   </section>

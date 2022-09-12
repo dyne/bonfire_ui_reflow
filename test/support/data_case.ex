@@ -19,7 +19,6 @@ defmodule Bonfire.UI.Reflow.DataCase do
 
   using do
     quote do
-
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
@@ -28,7 +27,6 @@ defmodule Bonfire.UI.Reflow.DataCase do
   end
 
   setup tags do
-
     Bonfire.Common.Test.Interactive.setup_test_repo(tags)
 
     :ok

@@ -1,49 +1,58 @@
 defmodule Bonfire.UI.Reflow.ResourceLive do
   use Bonfire.UI.Common.Web, :surface_live_view
   # use Surface.LiveView
-  use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
+  use AbsintheClient,
+    schema: Bonfire.API.GraphQL.Schema,
+    action: [mode: :internal]
 
-  alias Bonfire.UI.Social.{HashtagsLive, ParticipantsLive}
-  alias Bonfire.UI.ValueFlows.{IntentCreateActivityLive, CreateMilestoneLive, ProposalFeedLive, FiltersLive}
+  alias Bonfire.UI.Social.HashtagsLive
+  alias Bonfire.UI.Social.ParticipantsLive
+
+  alias Bonfire.UI.ValueFlows.IntentCreateActivityLive
+  alias Bonfire.UI.ValueFlows.CreateMilestoneLive
+  alias Bonfire.UI.ValueFlows.ProposalFeedLive
+  alias Bonfire.UI.ValueFlows.FiltersLive
+
   alias Bonfire.UI.Me.LivePlugs
   alias Bonfire.Me.Users
   alias Bonfire.UI.Me.CreateUserLive
+
   # alias Bonfire.UI.Reflow.ResourceWidget
 
   @recurse_limit 10
 
   def mount(params, session, socket) do
-
     # debug(pre_plugs: socket)
 
-    live_plug params, session, socket, [
+    live_plug(params, session, socket, [
       LivePlugs.LoadCurrentAccount,
       LivePlugs.LoadCurrentUser,
       Bonfire.UI.Common.LivePlugs.StaticChanged,
       Bonfire.UI.Common.LivePlugs.Csrf,
       Bonfire.UI.Common.LivePlugs.Locale,
-      &mounted/3,
-    ]
+      &mounted/3
+    ])
   end
 
-  defp mounted(%{"id"=> id} = _params, _session, socket) do
+  defp mounted(%{"id" => id} = _params, _session, socket) do
     # debug(post_plugs: socket)
 
     resource = economic_resource(%{id: id}, socket)
 
     # debug(resource: resource)
 
-    {:ok, socket
-    |> assign(
-      page_title: "resource",
-      page: "Resource",
-      selected_tab: "about",
-      smart_input: false,
-      # resource: "1234",
-      resource: resource,
-      json:     resource |> nested_structs_to_maps() |> Jason.encode!() |> IO.inspect,
-      units: Bonfire.UI.Reflow.ProcessLive.units_for_select(socket)
-    )}
+    {:ok,
+     assign(
+       socket,
+       page_title: "resource",
+       page: "Resource",
+       selected_tab: "about",
+       smart_input: false,
+       # resource: "1234",
+       resource: resource,
+       json: resource |> nested_structs_to_maps() |> Jason.encode!() |> IO.inspect(),
+       units: Bonfire.UI.Reflow.ProcessLive.units_for_select(socket)
+     )}
   end
 
   @resource_fields_basic """
@@ -74,9 +83,9 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
   @track_trace """
   (recurse_limit: #{@recurse_limit}){
       __typename
-      ...on EconomicEvent {#{Bonfire.UI.Reflow.ProcessLive.event_fields_basic}}
+      ...on EconomicEvent {#{Bonfire.UI.Reflow.ProcessLive.event_fields_basic()}}
       ...on EconomicResource {#{@resource_fields_basic}}
-      ...on Process {#{Bonfire.UI.Reflow.ProcessLive.process_fields_basic}}
+      ...on Process {#{Bonfire.UI.Reflow.ProcessLive.process_fields_basic()}}
     }
   """
 
@@ -115,7 +124,8 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
     }
   }
   """
-  def economic_resource(params \\ %{}, socket), do: liveql(socket, :economic_resource, params)
+  def economic_resource(params \\ %{}, socket),
+    do: liveql(socket, :economic_resource, params)
 
   # FIXME: looks like we can't have multiple liveql queries in same module?
   # @graphql """
@@ -136,19 +146,20 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
   # """
   # def trace(params \\ %{}, socket), do: liveql(socket, :economic_resource, params)
 
-
-  def do_handle_params(%{"tab"=>"track"}, attrs, socket) do
+  def do_handle_params(%{"tab" => "track"}, attrs, socket) do
     resource = e(socket.assigns, :resource, nil)
 
     if resource do
       # resource = track(%{id: id}, socket)
       # debug(track: resource)
 
-      {:noreply, socket
-      |> assign(
-        selected_tab: "track",
-        feed: e(resource, :track, []) #|> debug("track")
-      )}
+      {:noreply,
+       assign(
+         socket,
+         selected_tab: "track",
+         # |> debug("track")
+         feed: e(resource, :track, [])
+       )}
     end
   end
 
@@ -159,24 +170,35 @@ defmodule Bonfire.UI.Reflow.ResourceLive do
       # resource = trace(%{id: id}, socket)
       # debug(trace: resource)
 
-      {:noreply, socket
-      |> assign(
-        selected_tab: "trace",
-        feed: e(resource, :trace, []) #|> debug("trace")
-      )}
+      {:noreply,
+       assign(
+         socket,
+         selected_tab: "trace",
+         # |> debug("trace")
+         feed: e(resource, :trace, [])
+       )}
     end
   end
 
   def handle_params(params, uri, socket) do
     # poor man's hook I guess
-    with {_, socket} <- Bonfire.UI.Common.LiveHandlers.handle_params(params, uri, socket) do
+    with {_, socket} <-
+           Bonfire.UI.Common.LiveHandlers.handle_params(params, uri, socket) do
       undead_params(socket, fn ->
         do_handle_params(params, uri, socket)
       end)
     end
   end
 
-  def handle_event(action, attrs, socket), do: Bonfire.UI.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)
-  def handle_info(info, socket), do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
+  def handle_event(action, attrs, socket),
+    do:
+      Bonfire.UI.Common.LiveHandlers.handle_event(
+        action,
+        attrs,
+        socket,
+        __MODULE__
+      )
 
+  def handle_info(info, socket),
+    do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
 end

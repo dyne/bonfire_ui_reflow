@@ -1,88 +1,165 @@
 <ul class="py-3 rounded shadow menu bg-base-100">
   <li class="uppercase menu-title">
-    <span>{l "Reflow"}</span>
+    <span>{l("Reflow")}</span>
   </li>
 
   <li>
-    <LivePatch to={"/processes"} class={"w-full flex items-center text-sm font-regular text-base-content focus:bg-primary", "hover:bg-primary bg-primary text-base-content  ": @page == "processes"}>
+    <LivePatch
+      to="/processes"
+      class={
+        "w-full flex items-center text-sm font-regular text-base-content focus:bg-primary",
+        "hover:bg-primary bg-primary text-base-content  ": @page == "processes"
+      }
+    >
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center  group-">
         <svg
           aria-labelledby="navigation_lists"
           xmlns="http://www.w3.org/2000/svg"
-          class={"w-5 h-5 transition duration-150 ease-in-out text-base-content opacity-60", "text-base-content opacity-80": @page == "processes"}
+          class={
+            "w-5 h-5 transition duration-150 ease-in-out text-base-content opacity-60",
+            "text-base-content opacity-80": @page == "processes"
+          }
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
         >
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />  </svg>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+          />
+        </svg>
       </span>
       <span class="text-sm font-semibold capitalize" id="navigation_profile">all processes</span>
     </LivePatch>
-</li>
+  </li>
 
   <li>
-    <LivePatch :if={ulid(@current_user)} to={path(@current_user)} class={"w-full flex items-center text-sm font-regular text-base-content focus:bg-primary", "hover:bg-primary bg-primary text-base-content  ": @page == "profile"}>
+    <LivePatch
+      :if={ulid(@current_user)}
+      to={path(@current_user)}
+      class={
+        "w-full flex items-center text-sm font-regular text-base-content focus:bg-primary",
+        "hover:bg-primary bg-primary text-base-content  ": @page == "profile"
+      }
+    >
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center  group-">
-      <svg
-        aria-labelledby="navigation_profile"
-        class={"w-5 h-5 transition duration-150 ease-in-out text-base-content opacity-60", "text-base-content opacity-80": @page == "profile"}
-        fill="none" stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <svg
+          aria-labelledby="navigation_profile"
+          class={
+            "w-5 h-5 transition duration-150 ease-in-out text-base-content opacity-60",
+            "text-base-content opacity-80": @page == "profile"
+          }
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+          /></svg>
       </span>
       <span class="text-sm font-semibold capitalize" id="navigation_profile">profile</span>
     </LivePatch>
-</li>
+  </li>
 
   <li>
-    <LivePatch to={"/inventory"} class={"w-full flex items-center text-sm font-regular text-base-content focus:bg-primary", "hover:bg-primary bg-primary text-base-content  ": @page == "inventory"}>
+    <LivePatch
+      to="/inventory"
+      class={
+        "w-full flex items-center text-sm font-regular text-base-content focus:bg-primary",
+        "hover:bg-primary bg-primary text-base-content  ": @page == "inventory"
+      }
+    >
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center  group-">
         <svg
           aria-labelledby="navigation_lists"
           xmlns="http://www.w3.org/2000/svg"
-          class={"w-5 h-5 transition duration-150 ease-in-out text-base-content opacity-60", "text-base-content opacity-80": @page == "inventory"}
+          class={
+            "w-5 h-5 transition duration-150 ease-in-out text-base-content opacity-60",
+            "text-base-content opacity-80": @page == "inventory"
+          }
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
         >
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />  </svg>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+          />
+        </svg>
       </span>
       <span class="text-sm font-semibold capitalize" id="navigation_profile">My inventory</span>
     </LivePatch>
-</li>
+  </li>
 
   <li>
-    <LivePatch to={"/materials"} class={"w-full flex items-center text-sm font-regular text-base-content focus:bg-primary", "hover:bg-primary bg-primary text-base-content  ": @page == "materials"}>
+    <LivePatch
+      to="/materials"
+      class={
+        "w-full flex items-center text-sm font-regular text-base-content focus:bg-primary",
+        "hover:bg-primary bg-primary text-base-content  ": @page == "materials"
+      }
+    >
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center  group-">
         <svg
           aria-labelledby="navigation_lists"
           xmlns="http://www.w3.org/2000/svg"
-          class={"w-5 h-5 transition duration-150 ease-in-out text-base-content opacity-60", "text-base-content opacity-80": @page == "materials"}
+          class={
+            "w-5 h-5 transition duration-150 ease-in-out text-base-content opacity-60",
+            "text-base-content opacity-80": @page == "materials"
+          }
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
         >
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />  </svg>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+          />
+        </svg>
       </span>
       <span class="text-sm font-semibold capitalize" id="navigation_profile">all materials</span>
     </LivePatch>
-</li>
+  </li>
 
   <li>
-    <LivePatch to={"/reflow/map"} class={"w-full flex items-center text-sm font-regular text-base-content focus:bg-primary", "hover:bg-primary bg-primary text-base-content  ": @page == "map"}>
-      <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center  ">
-      <svg
-        aria-labelledby="navigation_profile"
-        class={"w-5 h-5 transition duration-150 ease-in-out text-base-content opacity-60", "text-base-content opacity-80": @page == "map"}
-        fill="none" stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+    <LivePatch
+      to="/reflow/map"
+      class={
+        "w-full flex items-center text-sm font-regular text-base-content focus:bg-primary",
+        "hover:bg-primary bg-primary text-base-content  ": @page == "map"
+      }
+    >
+      <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center">
+        <svg
+          aria-labelledby="navigation_profile"
+          class={
+            "w-5 h-5 transition duration-150 ease-in-out text-base-content opacity-60",
+            "text-base-content opacity-80": @page == "map"
+          }
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+          />
         </svg>
       </span>
       <span class="text-sm font-semibold capitalize" id="navigation_profile">Map</span>
     </LivePatch>
-    </li>
-
-  </ul>
+  </li>
+</ul>
