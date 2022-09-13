@@ -10,7 +10,7 @@ defmodule Bonfire.UI.Reflow.ProcessesLive do
 
   alias Bonfire.UI.ValueFlows.IntentCreateActivityLive
   alias Bonfire.UI.ValueFlows.CreateMilestoneLive
-  alias Bonfire.UI.ValueFlows.ProposalFeedLive
+
   alias Bonfire.UI.ValueFlows.FiltersLive
 
   alias Bonfire.UI.Me.LivePlugs
