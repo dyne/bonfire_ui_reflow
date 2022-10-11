@@ -2,27 +2,28 @@ defmodule Bonfire.UI.Reflow.Routes do
   defmacro __using__(_) do
     quote do
       # pages anyone can view
-      scope "/", Bonfire.UI.Reflow do
+      scope "/reflow" do
         pipe_through(:browser)
-        live("/resource/:id", ResourceLive, as: ValueFlows.EconomicResource)
-        live("/resource/:id/:tab", ResourceLive)
+        live("/", Bonfire.UI.Reflow.ProcessesLive)
+
+        live("/resource/:id", Bonfire.UI.Reflow.ResourceLive, as: ValueFlows.EconomicResource)
+        live("/resource/:id/:tab", Bonfire.UI.Reflow.ResourceLive)
+
         # , as: ValueFlows.Process)
-        live("/process/", ProcessLive)
+        live("/process/", Bonfire.UI.Reflow.ProcessLive)
         # , as: ValueFlows.Process)
-        live("/process/:id", ProcessLive)
-        live("/process/:id/:tab", ProcessLive)
-        live("/processes", ProcessesLive)
-        live("/materials", MaterialsLive)
-        live("/inventory", InventoryLive)
-        live("/reflow/map", MapLive)
-      end
+        live("/process/:id", Bonfire.UI.Reflow.ProcessLive)
+        live("/process/:id/:tab", Bonfire.UI.Reflow.ProcessLive)
 
-      scope "/" do
-        pipe_through(:browser)
+        live("/materials", Bonfire.UI.Reflow.MaterialsLive)
 
-        live("/reflow/event/:id", Bonfire.UI.Social.DiscussionLive, as: ValueFlows.EconomicEvent)
+        live("/inventory", Bonfire.UI.Reflow.InventoryLive)
 
-        live("/reflow/resource_spec/:id", Bonfire.UI.Social.DiscussionLive,
+        live("/map", Bonfire.UI.Reflow.MapLive)
+
+        live("/event/:id", Bonfire.UI.Social.DiscussionLive, as: ValueFlows.EconomicEvent)
+
+        live("/resource_spec/:id", Bonfire.UI.Social.DiscussionLive,
           as: ValueFlows.Knowledge.ResourceSpecification
         )
       end

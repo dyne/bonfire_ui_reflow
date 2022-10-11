@@ -19,7 +19,7 @@ defmodule Bonfire.UI.Reflow.ProcessesLive do
 
   # alias Bonfire.UI.Coordination.ResourceWidget
 
-  declare_extension("Reflow", icon: "twemoji:recycling-symbol")
+  declare_extension("Reflow", icon: "twemoji:recycling-symbol", href: "/reflow")
 
   def mount(params, session, socket) do
     live_plug(params, session, socket, [
