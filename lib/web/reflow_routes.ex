@@ -1,4 +1,6 @@
 defmodule Bonfire.UI.Reflow.Routes do
+  def declare_routes, do: "reflow"
+
   defmacro __using__(_) do
     quote do
       # pages anyone can view
