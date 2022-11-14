@@ -5,7 +5,7 @@
 
   <li>
     <LivePatch
-      to="/processes"
+      to={~p"/processes"}
       class={
         "w-full flex items-center text-sm font-regular text-base-content focus:bg-primary",
         "hover:bg-primary bg-primary text-base-content  ": @page == "processes"
@@ -69,7 +69,7 @@
 
   <li>
     <LivePatch
-      to="/inventory"
+      to={~p"/inventory"}
       class={
         "w-full flex items-center text-sm font-regular text-base-content focus:bg-primary",
         "hover:bg-primary bg-primary text-base-content  ": @page == "inventory"
@@ -101,7 +101,7 @@
 
   <li>
     <LivePatch
-      to="/materials"
+      to={~p"/materials"}
       class={
         "w-full flex items-center text-sm font-regular text-base-content focus:bg-primary",
         "hover:bg-primary bg-primary text-base-content  ": @page == "materials"
@@ -133,7 +133,7 @@
 
   <li>
     <LivePatch
-      to="/reflow/map"
+      to={~p"/reflow/map"}
       class={
         "w-full flex items-center text-sm font-regular text-base-content focus:bg-primary",
         "hover:bg-primary bg-primary text-base-content  ": @page == "map"
