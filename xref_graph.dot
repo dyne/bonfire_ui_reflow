@@ -1,0 +1,16 @@
+digraph "xref graph" {
+  "lib/integration.ex"
+  "lib/web/components/form_extras_live.ex"
+  "lib/web/components/profile_inventory_live.ex"
+  "lib/web/components/sidebar_navigation_live.ex"
+  "lib/web/pages/inventory/inventory_live.ex"
+  "lib/web/pages/map/map_live.ex"
+  "lib/web/pages/materials/materials_live.ex"
+  "lib/web/pages/process/process_live.ex"
+  "lib/web/pages/process/process_live.ex" -> "lib/web/components/form_extras_live.ex"
+  "lib/web/pages/processes/processes_live.ex"
+  "lib/web/pages/resource/resource_live.ex"
+  "lib/web/pages/resource/resource_live.ex" -> "lib/web/components/form_extras_live.ex"
+  "lib/web/pages/resource/resource_live.ex" -> "lib/web/pages/process/process_live.ex" [label="(compile)"]
+  "lib/web/reflow_routes.ex"
+}
