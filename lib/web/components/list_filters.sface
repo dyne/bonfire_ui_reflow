@@ -29,11 +29,11 @@
     x-cloak
     x-data="{ open: false }"
     @keydown.escape.stop="open = false"
-    @click.outside="open = false"
+    x-on:click.outside="open = false"
     class="relative block  text-left"
   >
     <button
-      @click="open = !open"
+      x-on:click="open = !open"
       aria-haspopup="true"
       x-bind:aria-expanded="open"
       aria-expanded="true"
