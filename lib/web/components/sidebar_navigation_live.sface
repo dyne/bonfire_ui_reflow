@@ -37,7 +37,7 @@
 
   <li>
     <LivePatch
-      :if={ulid(@current_user)}
+      :if={current_user_id(@__context__)}
       to={path(@current_user)}
       class={
         "w-full flex items-center text-sm font-regular text-base-content focus:bg-primary",
