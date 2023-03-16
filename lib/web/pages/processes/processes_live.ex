@@ -35,7 +35,7 @@ defmodule Bonfire.UI.Reflow.ProcessesLive do
   defp mounted(_params, _session, socket) do
     {:ok,
      socket
-     |> fetch()
+     |> fetch_assigns()
      |> assign(
        page_title: "All Processes",
        page: "processes",
@@ -65,7 +65,7 @@ defmodule Bonfire.UI.Reflow.ProcessesLive do
   def processes_pages(params \\ %{}, socket),
     do: liveql(socket, :processes_pages, params)
 
-  def fetch(params \\ %{}, socket) do
+  def fetch_assigns(params \\ %{}, socket) do
     with %{edges: processes, page_info: page_info} <-
            processes_pages(params, socket) do
       assign(
